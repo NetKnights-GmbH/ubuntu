@@ -70,12 +70,12 @@ fi
 }
 
 adapt_pi_cfg() {
-	if [ !$(grep "^PI_PEPPER" /etc/privacyidea/pi.cfg) ]; then
+	if [ -z "$(grep '^PI_PEPPER' /etc/privacyidea/pi.cfg)" ]; then
 	    # PEPPER does not exist, yet
 	    PEPPER="$(tr -dc A-Za-z0-9_ </dev/urandom | head -c24)"
 	    echo "PI_PEPPER = '$PEPPER'" >> /etc/privacyidea/pi.cfg
 	fi
-	if [ !$(grep "^SECRET_KEY" /etc/privacyidea/pi.cfg || true) ]; then
+	if [ -z "$(grep '^SECRET_KEY' /etc/privacyidea/pi.cfg)" ]; then
 	    # SECRET_KEY does not exist, yet
 	    SECRET="$(tr -dc A-Za-z0-9_ </dev/urandom | head -c24)"
 	    echo "SECRET_KEY = '$SECRET'" >> /etc/privacyidea/pi.cfg
@@ -111,7 +111,7 @@ enable_apache() {
 
 update_db() {
 	# Upgrade the database
-	privacyidea-schema-upgrade /usr/lib/privacyidea/migrations > /dev/null
+	privacyidea-schema-upgrade /opt/privacyidea/lib/privacyidea/migrations > /dev/null
 }
 
 create_gpg() {
@@ -122,9 +122,18 @@ create_gpg() {
 	killall -9 rngd
 }
 
+
+set_path() {
+  if [ -z "$(grep '/opt/privacyidea/bin' /etc/environment)" ]; then
+	  # Write the path to the environment, if it is not there
+	echo 'PATH=$PATH:/opt/privacyidea/bin' >> /etc/environment
+  fi
+}
+
 case "$1" in
 
   configure)
+	export PATH=$PATH:/opt/privacyidea/bin
 	create_user
 	adapt_pi_cfg
 	create_database
@@ -135,6 +144,7 @@ case "$1" in
 	service apache2 restart
 	update_db
 	create_gpg
+	set_path
   ;;
 
   abort-upgrade|abort-remove|abort-deconfigure)
