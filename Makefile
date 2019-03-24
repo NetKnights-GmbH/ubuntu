@@ -37,3 +37,24 @@ server:
 
 all:
 	make clean privacyidea server
+
+ppa-dev:
+	make all
+	# xenial
+	#
+	sed -e s/"trusty) trusty; urgency"/"xenial) xenial; urgency"/g ${DEBIAN_PI}/changelog > ${BUILDDIR_PI}/debian/changelog
+	sed -e s/"trusty) trusty; urgency"/"xenial) xenial; urgency"/g ${DEBIAN_SERVER}/changelog > ${BUILDDIR_SERVER}/debian/changelog
+	(cd ${BUILDDIR_PI}; debuild -sa -S)
+	(cd ${BUILDDIR_SERVER}; debuild -sa -S)
+	# bionic
+	
+	sed -e s/"trusty) trusty; urgency"/"bionic) bionic; urgency"/g ${DEBIAN_PI}/changelog > ${BUILDDIR_PI}/debian/changelog
+	sed -e s/"trusty) trusty; urgency"/"bionic) bionic; urgency"/g ${DEBIAN_SERVER}/changelog > ${BUILDDIR_SERVER}/debian/changelog
+	(cd ${BUILDDIR_PI}; debuild -sa -S)
+	(cd ${BUILDDIR_SERVER}; debuild -sa -S)
+
+#        sed -e s/"trusty) trusty; urgency"/"bionic) bionic; urgency"/g deploy/debian-ubuntu/changelog > DEBUILD/privacyidea.org/debian/changelog
+#        (cd DEBUILD/privacyidea.org; debuild -sa -S)
+#        dput ppa:privacyidea/privacyidea-dev DEBUILD/python-privacyidea_${VERSION}*_source.changes
+
+
