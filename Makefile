@@ -1,11 +1,13 @@
 VERSION=3.0~dev3
-SERIES=bionic
+SERIES=xenial
 
 # Do not change this
 BUILDDIR_PI=DEBUILD/privacyidea.orig
 BUILDDIR_SERVER=DEBUILD/privacyidea-server.orig
 DEBIAN_PI=debian_privacyidea
 DEBIAN_SERVER=debian_server
+MYDIR=/home/cornelius/ubuntu/
+REPO=communityrepo
 
 GIT_VERSION=`echo ${VERSION} | sed -e s/\~//g`
 
@@ -18,6 +20,7 @@ privacyidea:
 	# Fetch the code from github
 	(cd DEBUILD; git clone https://github.com/privacyidea/privacyidea.git privacyidea.orig)
 	(cd ${BUILDDIR_PI}; git checkout v${GIT_VERSION})
+	(cd ${BUILDDIR_PI}; rm -fr tests)
 	mkdir -p ${BUILDDIR_PI}/debian
 	cp -r ${DEBIAN_PI}/* ${BUILDDIR_PI}/debian/
 	cp -r deploy ${BUILDDIR_PI}/
@@ -38,23 +41,18 @@ server:
 all:
 	make clean privacyidea server
 
-ppa-dev:
-	make all
-	# xenial
-	#
-	sed -e s/"trusty) trusty; urgency"/"xenial) xenial; urgency"/g ${DEBIAN_PI}/changelog > ${BUILDDIR_PI}/debian/changelog
-	sed -e s/"trusty) trusty; urgency"/"xenial) xenial; urgency"/g ${DEBIAN_SERVER}/changelog > ${BUILDDIR_SERVER}/debian/changelog
-	(cd ${BUILDDIR_PI}; debuild -sa -S)
-	(cd ${BUILDDIR_SERVER}; debuild -sa -S)
-	# bionic
-	
-	sed -e s/"trusty) trusty; urgency"/"bionic) bionic; urgency"/g ${DEBIAN_PI}/changelog > ${BUILDDIR_PI}/debian/changelog
-	sed -e s/"trusty) trusty; urgency"/"bionic) bionic; urgency"/g ${DEBIAN_SERVER}/changelog > ${BUILDDIR_SERVER}/debian/changelog
-	(cd ${BUILDDIR_PI}; debuild -sa -S)
-	(cd ${BUILDDIR_SERVER}; debuild -sa -S)
+init-repo:
+	reprepro -b $(MYDIR)/${REPO}/stable createsymlinks
+	reprepro -b $(MYDIR)/${REPO}/devel createsymlinks
 
-#        sed -e s/"trusty) trusty; urgency"/"bionic) bionic; urgency"/g deploy/debian-ubuntu/changelog > DEBUILD/privacyidea.org/debian/changelog
-#        (cd DEBUILD/privacyidea.org; debuild -sa -S)
-#        dput ppa:privacyidea/privacyidea-dev DEBUILD/python-privacyidea_${VERSION}*_source.changes
+add-repo-devel:
+	reprepro -b ${MYDIR}/${REPO}/devel -V include xenial DEBUILD/privacyidea-server_*.changes || true
+	reprepro -b ${MYDIR}/${REPO}/devel -V include xenial DEBUILD/privacyidea_*.changes || true
 
+repo-stable:
+	@echo "Just copyiing the devel to stable"
+	(cd ${REPO}; cp -rP devel/* stable/)
+
+push-lancelot:	
+	rsync -r ${REPO}/* root@lancelot:/srv/www/nossl/community/
 
