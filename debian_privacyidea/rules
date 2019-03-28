@@ -6,9 +6,9 @@
 %:
 	dh $@ --with python-virtualenv
 
-override_dh_virtualenv:
-	# --upgrade-pip does not exist on Ubuntu 16.04 / ver 0.11
-	dh_virtualenv --upgrade-pip
+#override_dh_virtualenv:
+#	# --upgrade-pip does not exist on Ubuntu 16.04 / ver 0.11
+#	dh_virtualenv --upgrade-pip
 
 override_dh_shlibdeps:
 	dh_shlibdeps --exclude=numpy --exclude=psycopg2 --exclude=libz --exclude=png16

@@ -28,7 +28,7 @@ privacyidea:
 	mv ${BUILDDIR_PI}/LICENSE ${BUILDDIR_PI}/debian/copyright
 	sed -e s/"trusty) trusty; urgency"/"${SERIES}) ${SERIES}; urgency"/g ${DEBIAN_PI}/changelog > ${BUILDDIR_PI}/debian/changelog
 	(cd DEBUILD; tar -zcf privacyidea_${VERSION}.orig.tar.gz --exclude=privacyidea.org/debian privacyidea.orig)
-	(cd ${BUILDDIR_PI}; DH_VIRTUALENV_INSTALL_ROOT=/opt/ DH_VERBOSE=1 dpkg-buildpackage -us -uc --sign-key=${SIGNKEY})
+	(cd ${BUILDDIR_PI}; DH_VIRTUALENV_INSTALL_ROOT=/opt/ DH_VERBOSE=1 dpkg-buildpackage -us -uc -k${SIGNKEY})
 
 server:
 	mkdir -p ${BUILDDIR_SERVER}/debian
@@ -37,7 +37,7 @@ server:
 	#mv ${BUILDDIR}/LICENSE ${BUILDDIR}/debian/copyright
 	sed -e s/"trusty) trusty; urgency"/"${SERIES}) ${SERIES}; urgency"/g ${DEBIAN_SERVER}/changelog > ${BUILDDIR_SERVER}/debian/changelog
 	(cd DEBUILD; tar -zcf privacyidea-server_${VERSION}.orig.tar.gz --exclude=privacyidea-server.org/debian privacyidea-server.orig)
-	(cd ${BUILDDIR_SERVER}; dpkg-buildpackage -us -uc --sign-key=${SIGNKEY})
+	(cd ${BUILDDIR_SERVER}; dpkg-buildpackage -us -uc -k${SIGNKEY})
 
 all:
 	@echo "Building for ${SERIES}"
