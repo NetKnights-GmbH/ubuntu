@@ -1,0 +1,7 @@
+Origin: NetKnights
+Label: privacyIDEA
+Codename: xenial
+Suite: devel
+Architectures: amd64 source
+Components: main
+SignWith: release@netknights.it
