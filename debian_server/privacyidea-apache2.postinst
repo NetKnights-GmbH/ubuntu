@@ -29,9 +29,9 @@ create_files() {
         mkdir -p /var/log/privacyidea
         mkdir -p /var/lib/privacyidea
         touch /var/log/privacyidea/privacyidea.log
-        pi-manage create_enckey || true > /dev/null
-        pi-manage createdb || true > /dev/null
-        pi-manage create_audit_keys || true > /dev/null
+        /opt/privacyidea/bin/pi-manage create_enckey || true > /dev/null
+        /opt/privacyidea/bin/pi-manage createdb || true > /dev/null
+        /opt/privacyidea/bin/pi-manage create_audit_keys || true > /dev/null
         chown -R $USERNAME /var/log/privacyidea
         chown -R $USERNAME /var/lib/privacyidea
         chown -R $USERNAME /etc/privacyidea
@@ -111,7 +111,7 @@ enable_apache() {
 
 update_db() {
 	# Upgrade the database
-	privacyidea-schema-upgrade /opt/privacyidea/lib/privacyidea/migrations > /dev/null
+	/opt/privacyidea/bin/privacyidea-schema-upgrade /opt/privacyidea/lib/privacyidea/migrations > /dev/null
 }
 
 create_gpg() {
@@ -124,10 +124,8 @@ create_gpg() {
 
 
 set_path() {
-  if [ -z "$(grep '/opt/privacyidea/bin' /etc/environment)" ]; then
-	  # Write the path to the environment, if it is not there
-	echo 'PATH=$PATH:/opt/privacyidea/bin' >> /etc/environment
-  fi
+	# Allow pi-manage to be called from everywhere
+	ln -s /opt/privacyidea/bin/pi-manage /usr/local/bin
 }
 
 case "$1" in

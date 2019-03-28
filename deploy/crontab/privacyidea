@@ -1,2 +1,2 @@
 # Run the privacyidea-cron runner every 5 minutes
-*/5 * * * *	privacyidea	privacyidea-cron run_scheduled -c
+*/5 * * * *	privacyidea	/opt/privacyidea/bin/privacyidea-cron run_scheduled -c
