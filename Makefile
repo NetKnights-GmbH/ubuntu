@@ -1,4 +1,4 @@
-PI_VERSION=3.0~dev3
+PI_VERSION=3.0~dev5
 ifdef VERSION
 	PI_VERSION=${VERSION}
 endif

@@ -29,9 +29,9 @@ create_files() {
         mkdir -p /var/log/privacyidea
         mkdir -p /var/lib/privacyidea
         touch /var/log/privacyidea/privacyidea.log
-	pi-manage create_enckey || true
-	pi-manage createdb || true
-	pi-manage create_audit_keys || true
+	/opt/privacyidea/bin/pi-manage create_enckey || true
+	/opt/privacyidea/bin/pi-manage createdb || true
+	/opt/privacyidea/bin/pi-manage create_audit_keys || true
         chown -R $USERNAME /var/log/privacyidea
         chown -R $USERNAME /var/lib/privacyidea
         chown -R $USERNAME /etc/privacyidea
@@ -106,16 +106,29 @@ enable_nginx_uwsgi() {
 
 update_db() {
         # Upgrade the database
-	privacyidea-schema-upgrade /usr/lib/privacyidea/migrations > /dev/null
+	/opt/privacyidea/bin/privacyidea-schema-upgrade /usr/lib/privacyidea/migrations > /dev/null
 }
 
+
+set_path() {
+	# Allow pi-manage to be called
+	ln -s /opt/privacyidea/bin/pi-manage /usr/local/bin/
+}
 
 case "$1" in
 
   configure)
+        set_path
 	create_user
 	adapt_pi_cfg
-	create_database
+        if [ -z "$2" ]; then
+		# We are in the install step
+		# So we stamp the DB
+		/opt/privacyidea/bin/pi-manage db stamp -d /opt/privacyidea/lib/privacyidea/migrations/ head
+	else
+		# We are in an update step
+		update_db
+	fi
 	enable_nginx_uwsgi
 	create_files
 	create_certificate
@@ -123,7 +136,6 @@ case "$1" in
 	#update-rc.d uwsgi defaults
 	service uwsgi restart
 	service nginx restart
-	update_db
   ;;
 
   abort-upgrade|abort-remove|abort-deconfigure)
