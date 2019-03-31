@@ -19,6 +19,10 @@ unset_sites () {
 
 unset_sites $1
 
+# Remove the symbolic link to pi-manage
+if [ -L /usr/local/bin/pi-manage ]; then
+    rm /usr/local/bin/pi-manage
+fi
 
 #DEBHELPER#
 exit 0
