@@ -115,7 +115,14 @@ case "$1" in
   configure)
 	create_user
 	adapt_pi_cfg
-	create_database
+        if [ -z "$2" ]; then
+		# We are in the install step
+		# So we stamp the DB
+		/opt/privacyidea/bin/pi-manage db stamp -d /opt/privacyidea/lib/privacyidea/migrations/ head
+	else
+		# We are in an update step
+		update_db
+	fi
 	enable_nginx_uwsgi
 	create_files
 	create_certificate
@@ -123,7 +130,6 @@ case "$1" in
 	#update-rc.d uwsgi defaults
 	service uwsgi restart
 	service nginx restart
-	update_db
   ;;
 
   abort-upgrade|abort-remove|abort-deconfigure)
