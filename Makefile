@@ -1,4 +1,4 @@
-VERSION=3.0~dev3
+VERSION=3.0~dev5
 
 # Do not change this
 SERIES=`lsb_release -c | cut -d: -f2 | sed -e s/"\s"//g`
