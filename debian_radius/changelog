@@ -1,0 +1,14 @@
+privacyidea-radius (3.1~dev1-1trusty) trusty; urgency=medium
+
+  * Add timing to log file
+  * return RLM_MODULE_NOTFOUND in case the user is not found
+  * remove static user-dir mapping
+
+ -- Cornelius Kölbel <cornelius.koelbel@netknights.it>  Fri, 22 Mar 2019 14:30:00 +0200
+
+privacyidea-radius (3.0-1trusty) trusty; urgency=medium
+
+  * Splitt password at Null byte
+  * Return RLM_MODULE_FAIL if response is not OK 200
+
+ -- Cornelius Kölbel <cornelius.koelbel@netknights.it>  Fri, 22 Mar 2019 14:30:00 +0200
