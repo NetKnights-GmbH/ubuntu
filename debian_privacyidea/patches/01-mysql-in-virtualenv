@@ -1,0 +1,18 @@
+Description: Add MySQL-python into virtualenv
+  MySQL-python is needed for all old installations, which run a
+  SQL URL like mysql://localhost/pi 
+Author: Cornelius Kölbel <cornelius.koelbel@netknights.it>
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+Index: privacyidea.orig/requirements.txt
+===================================================================
+--- privacyidea.orig.orig/requirements.txt
++++ privacyidea.orig/requirements.txt
+@@ -32,6 +32,7 @@ lxml==4.2.1
+ Mako==1.0.7
+ MarkupSafe==1.0
+ mock==2.0.0
++MySQL-python==1.2.5
+ netaddr==0.7.19
+ nose==1.3.7
+ numpy==1.14.3
