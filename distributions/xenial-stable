@@ -2,6 +2,6 @@ Origin: NetKnights
 Label: privacyIDEA
 Codename: xenial
 Suite: stable
-Architectures: amd64 source
+Architectures: i386 amd64 source
 Components: main
 SignWith: release@netknights.it

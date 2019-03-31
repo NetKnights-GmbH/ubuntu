@@ -8,6 +8,7 @@ Standards-Version: 3.9.5
 Package: privacyidea
 Architecture: amd64
 Replaces: python-privacyidea (<< 3.0)
+Breaks: python-privacyidea (<< 3.0)
 Conflicts: privacyidea-venv
 Pre-Depends: dpkg (>= 1.16.1), python2.7-minimal, ${misc:Pre-Depends}
 Depends: ${python:Depends}, ${misc:Depends}
