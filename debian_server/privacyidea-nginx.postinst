@@ -12,6 +12,8 @@ if [ -f /usr/share/dbconfig-common/dpkg/postinst.pgsql  ]; then
 fi
 
 USERNAME=privacyidea
+CERTDAYS=1095
+CERTKEYSIZE=4096
 
 if test -f /etc/default/privacyidea; then
     . /etc/default/privacyidea
@@ -47,9 +49,9 @@ create_certificate() {
 if [ ! -e /etc/privacyidea/server.pem ]; then
         # This is the certificate when running with paster...
         cd /etc/privacyidea
-        openssl genrsa -out server.key 2048
+        openssl genrsa -out server.key $CERTKEYSIZE
         openssl req -new -key server.key -out server.csr -subj "/CN=privacyidea"
-        openssl x509 -req -days 365 -in server.csr -signkey server.key -out server.crt
+        openssl x509 -req -days $CERTDAYS -in server.csr -signkey server.key -out server.crt
         cat server.crt server.key > server.pem
         rm -f server.crt server.key
         chown privacyidea server.pem
@@ -61,9 +63,9 @@ if [ ! -e /etc/ssl/certs/privacyideaserver.pem ]; then
         KEY=/etc/ssl/private/privacyideaserver.key
         CSR=`mktemp`
         CERT=/etc/ssl/certs/privacyideaserver.pem
-        openssl genrsa -out $KEY 2048
+        openssl genrsa -out $KEY $CERTKEYSIZE
         openssl req -new -key $KEY -out $CSR -subj "/CN=`hostname`"
-        openssl x509 -req -days 365 -in $CSR -signkey $KEY -out $CERT
+        openssl x509 -req -days $CERTDAYS -in $CSR -signkey $KEY -out $CERT
         rm -f $CSR
         chmod 400 $KEY
 fi
