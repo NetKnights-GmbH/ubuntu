@@ -122,7 +122,10 @@ case "$1" in
   configure)
         set_path
 	create_user
-	adapt_pi_cfg
+	adapt_pi_cfg        
+	enable_nginx_uwsgi
+	create_files
+	create_certificate
         if [ -z "$2" ]; then
 		# We are in the install step
 		# So we stamp the DB
@@ -131,9 +134,6 @@ case "$1" in
 		# We are in an update step
 		update_db
 	fi
-	enable_nginx_uwsgi
-	create_files
-	create_certificate
 	#update-rc.d nginx defaults
 	#update-rc.d uwsgi defaults
 	service uwsgi restart

@@ -119,7 +119,7 @@ update_db() {
 create_gpg() {
 	mkdir -p /etc/privacyidea/gpg
 	rngd -r /dev/urandom
-	pi-manage create_pgp_keys || true
+	/opt/privacyidea/bin/pi-manage create_pgp_keys || true
 	chown -R $USERNAME /etc/privacyidea/gpg
 	killall -9 rngd
 }
@@ -136,7 +136,12 @@ case "$1" in
 	export PATH=$PATH:/opt/privacyidea/bin
 	create_user
 	adapt_pi_cfg
-	create_database
+	create_database	
+	enable_apache
+	create_files
+	create_certificate
+	#update-rc.d apache2 defaults
+	service apache2 restart
 	if [ -z "$2" ]; then
 		# We are in the install step
 		# So we stamp the DB
@@ -147,12 +152,6 @@ case "$1" in
     touch /tmp/pi-upgrade
 		update_db
 	fi
-	enable_apache
-	create_files
-	create_certificate
-	#update-rc.d apache2 defaults
-	service apache2 restart
-	update_db
 	create_gpg
 	set_path
   ;;
