@@ -95,7 +95,7 @@ create_database() {
 	    NPW="$(tr -dc A-Za-z0-9_ </dev/urandom | head -c12)"
 	    mysql -u $USER --password=$PASSWORD -e "create database pi;" || true
 	    mysql -u $USER --password=$PASSWORD -e "grant all privileges on pi.* to 'pi'@'localhost' identified by '$NPW';"
-	    echo "SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://pi:$NPW@localhost/pi'" >> /etc/privacyidea/pi.cfg
+	    echo "SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://pi:$NPW@localhost/pi?charset=utf8'" >> /etc/privacyidea/pi.cfg
 	fi
 }
 
