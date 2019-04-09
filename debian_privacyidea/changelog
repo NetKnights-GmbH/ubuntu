@@ -1,4 +1,4 @@
-privacyidea (3.0~dev10-1trusty) trusty; urgency=medium
+privacyidea (3.0~dev11-1trusty) trusty; urgency=medium
 
   Features:
   * Add Push Token that receives a Firebase push notification and allows login
@@ -58,7 +58,7 @@ privacyidea (3.0~dev10-1trusty) trusty; urgency=medium
     of the generic event handler based statistics (#1314)
   * Deterministic installation with pinned dependencies on all distributions (#1127)
  
- -- NetKnights GmbH <release@netknights.it>  Mon, 09 Apr 2019 19:30:00 +0200
+ -- NetKnights GmbH <release@netknights.it>  Tue, 09 Apr 2019 14:30:00 +0200
 
 python-privacyidea (2.23.5-1trusty) trusty; urgency=medium
 
