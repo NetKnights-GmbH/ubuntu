@@ -2,6 +2,7 @@
     <plugin>python</plugin>
     <socket>/run/uwsgi/app/privacyidea/privacyidea.socket</socket>
     <chdir>/etc/privacyidea/</chdir>
+    <venv>/opt/privacyidea/</venv>
     <module>privacyideaapp</module>
     <master/>
     <processes>4</processes>
