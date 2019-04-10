@@ -1,6 +1,6 @@
-privacyidea-server (3.0~dev11-1trusty) trusty; urgency=medium
+privacyidea-server (3.0-1trusty) trusty; urgency=medium
 
   * Meta Package for running privacyIDEA in Webserver
  
- -- NetKnights GmbH <release@netknights.it>  Tue, 09 Apr 2019 14:30:00 +0200
+ -- NetKnights GmbH <release@netknights.it>  Wed, 10 Apr 2019 10:30:00 +0200
 
