@@ -8,7 +8,8 @@ Standards-Version: 3.9.5
 
 Package: privacyidea-nginx
 Architecture: all
-Depends: ${misc:Depends}, privacyidea (=${binary:Version}), nginx-full, uwsgi, 
+#Depends: ${misc:Depends}, privacyidea (=${binary:Version}), nginx-full, uwsgi, 
+Depends: ${misc:Depends}, privacyidea (>=3.0), nginx-full, uwsgi, 
  uwsgi-plugin-python, mysql-server|mariadb-server, mysql-client|mariadb-client
 Conflicts: apache2, privacyidea-apache2
 Description: 2FA system. This is a meta package to install privacyidea with nginx
@@ -19,7 +20,8 @@ Description: 2FA system. This is a meta package to install privacyidea with ngin
 
 Package: privacyidea-apache2
 Architecture: all
-Depends: ${misc:Depends}, privacyidea (=${binary:Version}), apache2,
+#Depends: ${misc:Depends}, privacyidea (=${binary:Version}), apache2,
+Depends: ${misc:Depends}, privacyidea (>=3.0), apache2,
  mysql-server|mariadb-server, mysql-client|mariadb-client, libapache2-mod-wsgi, rng-tools
 Conflicts: nginx, nginx-full, privacyidea-nginx
 Description: 2FA system. This is a meta package to install privacyidea with apache2
