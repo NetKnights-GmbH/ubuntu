@@ -7,10 +7,16 @@ DEBIAN_PI=debian_privacyidea
 DEBIAN_SERVER=debian_server
 DEBIAN_RADIUS=debian_radius
 MYDIR=.
-REPO=communityrepo
+COMMUNITYREPO=communityrepo
+ENTERPRISEREPO=enterpriserepo
 SIGNKEY=09404ABBEDB3586DEDE4AD2200F70D62AE250082
 
-GIT_VERSION=`echo ${PI_VERSION} | sed -e s/\~//g`
+GIT_VERSION=`echo ${VERSION} | sed -e s/\~//g`
+PI_VERSION=$(VERSION)
+
+ifndef REPO
+	REPO=${COMMUNITREPO}
+endif
 
 clean:
 	rm -fr DEBUILD
@@ -79,9 +85,31 @@ add-repo-stable:
 	reprepro -b ${MYDIR}/${REPO}/${SERIES}/stable -V include ${SERIES} DEBUILD/privacyidea_*.changes  || true
 
 push-lancelot:	
+ifeq ($(REPO),$(COMMUNITYREPO))
+	@echo "**** Pushing to community repo ****"
 	rsync -r ${REPO}/${SERIES}/* root@lancelot:/srv/www/nossl/community/${SERIES}
+endif
+ifeq ($(REPO),$(ENTERPRISEREPO))
+	@echo "**** Pushing to ENTERPRISE repo ****"
+ifeq ($(SERIES),xenial)	
+	# Currently we only push xenial to the enterprise repo, since we do not have
+	# a bionic enterprise repo, yet.
+	rsync -r ${REPO}/xenial/* root@lancelot:/srv/www/apt/
+else
+	$(error Currenty we do not push to a bionic enterprise repo!)
+endif
+endif
 
 ifndef VERSION
         $(error VERSION not set. Set VERSION to build like VERSION=v2.19.1)
 endif
 
+### This check does not work, yet
+#ifeq ($(REPO),$(ENTERPRISEREPO))
+#	echo "This is an enterp"
+#	# check if the VERSION number is OK for enterprise
+#	NUM=$(shell echo "$${VERSION}" | awk -F"." '{print NF-1}')
+#ifneq (${NUM}, 2)
+#	echo $(NUM)	
+#endif
+#endif
