@@ -1,8 +1,3 @@
-PI_VERSION=3.0~dev6
-ifdef VERSION
-	PI_VERSION=${VERSION}
-endif
-
 # Do not change this
 SERIES=`lsb_release -c | cut -d: -f2 | sed -e s/"\s"//g`
 BUILDDIR_PI=DEBUILD/privacyidea.orig
@@ -85,4 +80,8 @@ add-repo-stable:
 
 push-lancelot:	
 	rsync -r ${REPO}/${SERIES}/* root@lancelot:/srv/www/nossl/community/${SERIES}
+
+ifndef VERSION
+        $(error VERSION not set. Set VERSION to build like VERSION=v2.19.1)
+endif
 
