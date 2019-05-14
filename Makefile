@@ -61,10 +61,10 @@ init-repo:
 	mkdir -p $(MYDIR)/${REPO}/xenial/devel/conf
 	mkdir -p $(MYDIR)/${REPO}/bionic/stable/conf
 	mkdir -p $(MYDIR)/${REPO}/bionic/devel/conf
-	cp distributions/xenial-devel communityrepo/xenial/devel/conf/distributions
-	cp distributions/xenial-stable communityrepo/xenial/stable/conf/distributions
-	cp distributions/bionic-devel communityrepo/bionic/devel/conf/distributions
-	cp distributions/bionic-stable communityrepo/bionic/stable/conf/distributions
+	cp distributions/xenial-devel ${REPO}/xenial/devel/conf/distributions
+	cp distributions/xenial-stable ${REPO}/xenial/stable/conf/distributions
+	cp distributions/bionic-devel ${REPO}/bionic/devel/conf/distributions
+	cp distributions/bionic-stable ${REPO}/bionic/stable/conf/distributions
 	reprepro -b $(MYDIR)/${REPO}/xenial/stable createsymlinks
 	reprepro -b $(MYDIR)/${REPO}/xenial/devel createsymlinks
 	reprepro -b $(MYDIR)/${REPO}/bionic/stable createsymlinks
