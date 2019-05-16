@@ -9,7 +9,7 @@ Package: privacyidea
 Architecture: amd64
 Replaces: python-privacyidea (<< 3.0)
 Breaks: python-privacyidea (<< 3.0)
-Conflicts: privacyidea-venv, pi-appliance (<< 3.0)
+Conflicts: privacyidea-venv, pi-appliance (<= 2.1)
 Pre-Depends: dpkg (>= 1.16.1), python2.7-minimal, ${misc:Pre-Depends}
 Depends: ${python:Depends}, ${misc:Depends}, libmysqlclient20
 X-Python-Version: >= 2.7
