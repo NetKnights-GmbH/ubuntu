@@ -46,7 +46,8 @@ appliance:
 	(cd DEBUILD; git clone https://github.com/NetKnights-GmbH/privacyidea-appliance pi-appliance.orig)	
 	(cd ${BUILDDIR_APPLIANCE}; git checkout v${GIT_VERSION})
 	(cd ${BUILDDIR_APPLIANCE}; git submodule init; git submodule update --recursive --remote)
-	(cd ${BUILDDIR_APPLIANCE}; rm -fr test debian)
+	# Remove the tests
+	(cd ${BUILDDIR_APPLIANCE}; rm -fr test debian; find authappliance/lib/ -name test_\*.py -delete)
 	mkdir -p ${BUILDDIR_APPLIANCE}/debian
 	cp -r ${DEBIAN_APPLIANCE}/* ${BUILDDIR_APPLIANCE}/debian/
 	mv ${BUILDDIR_APPLIANCE}/LICENSE ${BUILDDIR_APPLIANCE}/debian/copyright
