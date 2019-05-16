@@ -3,9 +3,11 @@ SERIES=`lsb_release -c | cut -d: -f2 | sed -e s/"\s"//g`
 BUILDDIR_PI=DEBUILD/privacyidea.orig
 BUILDDIR_SERVER=DEBUILD/privacyidea-server.orig
 BUILDDIR_RADIUS=DEBUILD/privacyidea-radius.orig
+BUILDDIR_APPLIANCE=DEBUILD/pi-appliance.orig
 DEBIAN_PI=debian_privacyidea
 DEBIAN_SERVER=debian_server
 DEBIAN_RADIUS=debian_radius
+DEBIAN_APPLIANCE=debian_appliance
 MYDIR=.
 COMMUNITYREPO=communityrepo
 ENTERPRISEREPO=enterpriserepo
@@ -36,6 +38,21 @@ privacyidea:
 	sed -e s/"trusty) trusty; urgency"/"${SERIES}) ${SERIES}; urgency"/g ${DEBIAN_PI}/changelog > ${BUILDDIR_PI}/debian/changelog
 	(cd DEBUILD; tar -zcf privacyidea_${PI_VERSION}.orig.tar.gz --exclude=privacyidea.org/debian privacyidea.orig)
 	(cd ${BUILDDIR_PI}; DH_VIRTUALENV_INSTALL_ROOT=/opt/ DH_VERBOSE=1 dpkg-buildpackage -us -uc -k${SIGNKEY})
+
+appliance:
+	mkdir -p DEBUILD
+	rm -fr ${BUILDDIR_APPLIANCE}
+	# Fetch the code from github
+	(cd DEBUILD; git clone https://github.com/NetKnights-GmbH/privacyidea-appliance pi-appliance.orig)	
+	(cd ${BUILDDIR_APPLIANCE}; git checkout v${GIT_VERSION})
+	(cd ${BUILDDIR_APPLIANCE}; git submodule init; git submodule update --recursive --remote)
+	(cd ${BUILDDIR_APPLIANCE}; rm -fr test debian)
+	mkdir -p ${BUILDDIR_APPLIANCE}/debian
+	cp -r ${DEBIAN_APPLIANCE}/* ${BUILDDIR_APPLIANCE}/debian/
+	mv ${BUILDDIR_APPLIANCE}/LICENSE ${BUILDDIR_APPLIANCE}/debian/copyright
+	sed -e s/"xenial) xenaial; urgency"/"${SERIES}) ${SERIES}; urgency"/g ${DEBIAN_APPLIANCE}/changelog > ${BUILDDIR_APPLIANCE}/debian/changelog
+	(cd DEBUILD; tar -zcf pi-appliance_${PI_VERSION}.orig.tar.gz --exclude=pi-appliance.org/debian pi-appliance.orig)
+	(cd ${BUILDDIR_APPLIANCE}; DH_VIRTUALENV_INSTALL_ROOT=/opt/ DH_VERBOSE=1 dpkg-buildpackage -us -uc -k${SIGNKEY})
 
 radius:
 	mkdir -p DEBUILD
@@ -80,10 +97,20 @@ init-repo:
 add-repo-devel:
 	reprepro -b ${MYDIR}/${REPO}/${SERIES}/devel -V include ${SERIES} DEBUILD/privacyidea-server_*.changes || true
 	reprepro -b ${MYDIR}/${REPO}/${SERIES}/devel -V include ${SERIES} DEBUILD/privacyidea_*.changes || true
+	reprepro -b ${MYDIR}/${REPO}/${SERIES}/devel -V include ${SERIES} DEBUILD/privacyidea-radius_*.changes || true
+ifeq($(REPO), $(ENTERPRISEREPO))
+	@echo "**** Adding Appliance to enterprise repo ****"
+	reprepro -b ${MYDIR}/${REPO}/${SERIES}/devel -V include ${SERIES} DEBUILD/pi-appliance_*.changes || true
+endif
 
 add-repo-stable:
 	reprepro -b ${MYDIR}/${REPO}/${SERIES}/stable -V include ${SERIES} DEBUILD/privacyidea-server_*.changes  || true
 	reprepro -b ${MYDIR}/${REPO}/${SERIES}/stable -V include ${SERIES} DEBUILD/privacyidea_*.changes  || true
+	reprepro -b ${MYDIR}/${REPO}/${SERIES}/stable -V include ${SERIES} DEBUILD/privacyidea-radius_*.changes  || true
+ifeq($(REPO), $(ENTERPRISEREPO))
+	@echo "**** Adding Appliance to enterprise repo ****"
+	reprepro -b ${MYDIR}/${REPO}/${SERIES}/stable -V include ${SERIES} DEBUILD/pi-appliance_*.changes  || true
+endif
 
 push-lancelot:	
 ifeq ($(REPO),$(COMMUNITYREPO))
@@ -102,7 +129,7 @@ endif
 endif
 
 ifndef VERSION
-	$(error VERSION not set. Set VERSION to build like VERSION=v2.19.1)
+	$(error VERSION not set. Set VERSION to build like VERSION=3.0.1~dev7)
 endif
 
 ### This check does not work, yet
