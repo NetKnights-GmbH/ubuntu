@@ -15,8 +15,9 @@ GIT_VERSION=`echo ${VERSION} | sed -e s/\~//g`
 PI_VERSION=$(VERSION)
 
 ifndef REPO
-	REPO=${COMMUNITREPO}
+	REPO=${COMMUNITYREPO}
 endif
+
 
 clean:
 	rm -fr DEBUILD
@@ -101,7 +102,7 @@ endif
 endif
 
 ifndef VERSION
-        $(error VERSION not set. Set VERSION to build like VERSION=v2.19.1)
+	$(error VERSION not set. Set VERSION to build like VERSION=v2.19.1)
 endif
 
 ### This check does not work, yet
