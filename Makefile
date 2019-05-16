@@ -119,13 +119,9 @@ ifeq ($(REPO),$(COMMUNITYREPO))
 endif
 ifeq ($(REPO),$(ENTERPRISEREPO))
 	@echo "**** Pushing to ENTERPRISE repo ****"
-ifeq ($(SERIES),xenial)	
 	# Currently we only push xenial to the enterprise repo, since we do not have
 	# a bionic enterprise repo, yet.
 	rsync -r ${REPO}/xenial/* root@lancelot:/srv/www/apt/
-else
-	$(error Currenty we do not push to a bionic enterprise repo!)
-endif
 endif
 
 ifndef VERSION

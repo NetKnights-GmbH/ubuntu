@@ -1,4 +1,4 @@
-pi-appliance (3.0~dev1) xenial; ugency=low
+pi-appliance (3.0~dev1) xenial; urgency=low
 
   * Run with privacyIDEA 3.0 in virtualenv
 
