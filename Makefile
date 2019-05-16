@@ -98,7 +98,7 @@ add-repo-devel:
 	reprepro -b ${MYDIR}/${REPO}/${SERIES}/devel -V include ${SERIES} DEBUILD/privacyidea-server_*.changes || true
 	reprepro -b ${MYDIR}/${REPO}/${SERIES}/devel -V include ${SERIES} DEBUILD/privacyidea_*.changes || true
 	reprepro -b ${MYDIR}/${REPO}/${SERIES}/devel -V include ${SERIES} DEBUILD/privacyidea-radius_*.changes || true
-ifeq($(REPO), $(ENTERPRISEREPO))
+ifeq ($(REPO), $(ENTERPRISEREPO))
 	@echo "**** Adding Appliance to enterprise repo ****"
 	reprepro -b ${MYDIR}/${REPO}/${SERIES}/devel -V include ${SERIES} DEBUILD/pi-appliance_*.changes || true
 endif
@@ -107,7 +107,7 @@ add-repo-stable:
 	reprepro -b ${MYDIR}/${REPO}/${SERIES}/stable -V include ${SERIES} DEBUILD/privacyidea-server_*.changes  || true
 	reprepro -b ${MYDIR}/${REPO}/${SERIES}/stable -V include ${SERIES} DEBUILD/privacyidea_*.changes  || true
 	reprepro -b ${MYDIR}/${REPO}/${SERIES}/stable -V include ${SERIES} DEBUILD/privacyidea-radius_*.changes  || true
-ifeq($(REPO), $(ENTERPRISEREPO))
+ifeq ($(REPO), $(ENTERPRISEREPO))
 	@echo "**** Adding Appliance to enterprise repo ****"
 	reprepro -b ${MYDIR}/${REPO}/${SERIES}/stable -V include ${SERIES} DEBUILD/pi-appliance_*.changes  || true
 endif
