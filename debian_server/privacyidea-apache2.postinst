@@ -109,6 +109,9 @@ enable_apache() {
         ln -s /etc/ssl/certs/privacyideaserver.pem /etc/ssl/certs/privacyidea-bundle.crt || true
         ln -s /etc/ssl/private/privacyideaserver.key /etc/ssl/private/privacyidea.key || true
     fi
+    if [ ! -h /etc/apache2/sites-enabled/privacyidea-venv.conf ]; then
+	a2ensite privacyidea-venv
+    fi
 }
 
 update_db() {
@@ -145,11 +148,11 @@ case "$1" in
 	if [ -z "$2" ]; then
 		# We are in the install step
 		# So we stamp the DB
-    touch /tmp/pi-install
+		touch /tmp/pi-install
 		/opt/privacyidea/bin/pi-manage db stamp -d /opt/privacyidea/lib/privacyidea/migrations/ head
 	else
 		# We are in an update step
-    touch /tmp/pi-upgrade
+		touch /tmp/pi-upgrade
 		update_db
 	fi
 	create_gpg

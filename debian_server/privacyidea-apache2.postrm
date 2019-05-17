@@ -14,6 +14,7 @@ fi
 unset_sites () {
     if [ ! "upgrade" = "$1" ]; then
         rm -f /etc/apache2/sites-enabled/privacyidea.conf
+        rm -f /etc/apache2/sites-enabled/privacyidea-venv.conf
     fi
 }
 
