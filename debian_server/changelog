@@ -1,8 +1,11 @@
-privacyidea-server (3.0.1~dev3-1trusty) trusty; urgency=medium
+privacyidea-server (3.0.1~dev4-1trusty) trusty; urgency=medium
 
   * Meta Package to restart the webserver and use the new code
+  * pi-manage, privacyidea-diag, privacyidea-token-janitor have links in
+    /usr/bin
+  * the WSGIPythonHome has its own Apache config file.
 
- -- NetKnights GmbH <release@netknights.it>  Thu, 16 May 2019 12:00:00 +0200
+ -- NetKnights GmbH <release@netknights.it>  Fri, 17 May 2019 10:00:00 +0200
 
 privacyidea-server (3.0-1trusty) trusty; urgency=medium
 
