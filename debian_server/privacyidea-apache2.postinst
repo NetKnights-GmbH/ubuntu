@@ -130,7 +130,9 @@ create_gpg() {
 
 set_path() {
 	# Allow pi-manage to be called from everywhere
-	ln -s /opt/privacyidea/bin/pi-manage /usr/local/bin
+	ln -s /opt/privacyidea/bin/pi-manage /usr/bin/
+	ln -s /opt/privacyidea/bin/privacyidea-diag /usr/bin/
+	ln -s /opt/privacyidea/bin/privacyidea-token-janitor /usr/bin/
 }
 
 case "$1" in

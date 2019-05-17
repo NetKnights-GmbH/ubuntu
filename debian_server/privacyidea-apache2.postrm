@@ -22,7 +22,10 @@ unset_sites $1
 
 # Remove the symbolic link to pi-manage
 if [ -L /usr/local/bin/pi-manage ]; then
-    rm /usr/local/bin/pi-manage
+    rm -f /usr/local/bin/pi-manage
+    rm -f /usr/bin/pi-manage
+    rm -f /usr/bin/privacyidea-diag
+    rm -f /usr/bin/privacyidea-token-janitor
 fi
 
 #DEBHELPER#
