@@ -1,4 +1,4 @@
-privacyidea (3.0.1~dev3-1trusty) trusty; urgency=medium
+privacyidea (3.0.1~dev4-1trusty) trusty; urgency=medium
 
   Fixes:
   * Fix PUSH token issues:
@@ -18,8 +18,9 @@ privacyidea (3.0.1~dev3-1trusty) trusty; urgency=medium
   * Allow the usage if "browserLanguage" in custom templates (#1620)
   * Open all accordions when searching for policy action (#1558)
   * Fix to hide support links also in menu (#1626)
+  * Fix mail password with CRAM-MD4 (#1637)
 
- -- NetKnights GmbH <release@netknights.it>  Thu, 16 May 2019 12:00:00 +0200
+ -- NetKnights GmbH <release@netknights.it>  Tue, 21 May 2019 17:00:00 +0200
  
 privacyidea (3.0-1trusty) trusty; urgency=medium
 
