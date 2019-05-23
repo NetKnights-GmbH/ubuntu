@@ -1,4 +1,4 @@
-privacyidea (3.0.1~dev4-1trusty) trusty; urgency=medium
+privacyidea (3.0.1-1trusty) trusty; urgency=medium
 
   Fixes:
   * Fix PUSH token issues:
@@ -20,7 +20,7 @@ privacyidea (3.0.1~dev4-1trusty) trusty; urgency=medium
   * Fix to hide support links also in menu (#1626)
   * Fix mail password with CRAM-MD4 (#1637)
 
- -- NetKnights GmbH <release@netknights.it>  Tue, 21 May 2019 17:00:00 +0200
+ -- NetKnights GmbH <release@netknights.it>  Thu, 23 May 2019 12:00:00 +0200
  
 privacyidea (3.0-1trusty) trusty; urgency=medium
 

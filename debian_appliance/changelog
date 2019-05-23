@@ -1,8 +1,8 @@
-pi-appliance (3.0~dev1) xenial; urgency=low
+pi-appliance (3.0) xenial; urgency=low
 
   * Run with privacyIDEA 3.0 in virtualenv
 
- -- NetKnights GmbH <release@netknights.it>  Thu, 16 May 2019 12:00:00 +0200
+ -- NetKnights GmbH <release@netknights.it>  Thu, 23 May 2019 12:00:00 +0200
 
 pi-appliance (2.1~dev1) xenial; urgency=low
 
