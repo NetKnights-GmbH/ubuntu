@@ -75,7 +75,7 @@ server:
 	#mv ${BUILDDIR}/LICENSE ${BUILDDIR}/debian/copyright
 	sed -e s/"trusty) trusty; urgency"/"${SERIES}) ${SERIES}; urgency"/g ${DEBIAN_SERVER}/changelog > ${BUILDDIR_SERVER}/debian/changelog
 	(cd DEBUILD; tar -zcf privacyidea-server_${PI_VERSION}.orig.tar.gz --exclude=debian/* privacyidea-server.orig)
-	(cd ${BUILDDIR_SERVER}; dpkg-buildpackage -us -uc -k${SIGNKEY})
+	(cd ${BUILDDIR_SERVER}; dpkg-buildpackage -sa -us -uc -k${SIGNKEY})
 
 all:
 	@echo "Building for ${SERIES}"
