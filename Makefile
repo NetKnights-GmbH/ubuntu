@@ -36,7 +36,7 @@ privacyidea:
 	cp -r deploy ${BUILDDIR_PI}/
 	mv ${BUILDDIR_PI}/LICENSE ${BUILDDIR_PI}/debian/copyright
 	sed -e s/"trusty) trusty; urgency"/"${SERIES}) ${SERIES}; urgency"/g ${DEBIAN_PI}/changelog > ${BUILDDIR_PI}/debian/changelog
-	(cd DEBUILD; tar -zcf privacyidea_${PI_VERSION}.orig.tar.gz --exclude=privacyidea.org/debian privacyidea.orig)
+	(cd DEBUILD; tar -zcf privacyidea_${PI_VERSION}.orig.tar.gz --exclude=debian/* privacyidea.orig)
 	(cd ${BUILDDIR_PI}; DH_VIRTUALENV_INSTALL_ROOT=/opt/ DH_VERBOSE=1 dpkg-buildpackage -us -uc -k${SIGNKEY})
 
 appliance:
@@ -52,7 +52,7 @@ appliance:
 	cp -r ${DEBIAN_APPLIANCE}/* ${BUILDDIR_APPLIANCE}/debian/
 	mv ${BUILDDIR_APPLIANCE}/LICENSE ${BUILDDIR_APPLIANCE}/debian/copyright
 	sed -e s/"xenial) xenaial; urgency"/"${SERIES}) ${SERIES}; urgency"/g ${DEBIAN_APPLIANCE}/changelog > ${BUILDDIR_APPLIANCE}/debian/changelog
-	(cd DEBUILD; tar -zcf pi-appliance_${PI_VERSION}.orig.tar.gz --exclude=pi-appliance.org/debian pi-appliance.orig)
+	(cd DEBUILD; tar -zcf pi-appliance_${PI_VERSION}.orig.tar.gz --exclude=debian/* pi-appliance.orig)
 	(cd ${BUILDDIR_APPLIANCE}; DH_VIRTUALENV_INSTALL_ROOT=/opt/ DH_VERBOSE=1 dpkg-buildpackage -us -uc -k${SIGNKEY})
 
 radius:
@@ -65,7 +65,7 @@ radius:
 	# copy e.g. privacyidea_radius.install and postinstall, which depends on the series
 	cp ${BUILDDIR_RADIUS}/debian/${SERIES}/* ${BUILDDIR_RADIUS}/debian/
 	sed -e s/"trusty) trusty; urgency"/"${SERIES}) ${SERIES}; urgency"/g ${DEBIAN_RADIUS}/changelog > ${BUILDDIR_RADIUS}/debian/changelog
-	(cd DEBUILD; tar -zcf privacyidea-radius_${PI_VERSION}.orig.tar.gz --exclude=privacyidea-radius.orig/debian privacyidea-radius.orig)
+	(cd DEBUILD; tar -zcf privacyidea-radius_${PI_VERSION}.orig.tar.gz --exclude=debian/* privacyidea-radius.orig)
 	(cd ${BUILDDIR_RADIUS}; dpkg-buildpackage -us -uc -k${SIGNKEY})
 
 server:
@@ -74,7 +74,7 @@ server:
 	cp -r deploy ${BUILDDIR_SERVER}/
 	#mv ${BUILDDIR}/LICENSE ${BUILDDIR}/debian/copyright
 	sed -e s/"trusty) trusty; urgency"/"${SERIES}) ${SERIES}; urgency"/g ${DEBIAN_SERVER}/changelog > ${BUILDDIR_SERVER}/debian/changelog
-	(cd DEBUILD; tar -zcf privacyidea-server_${PI_VERSION}.orig.tar.gz --exclude=privacyidea-server.org/debian privacyidea-server.orig)
+	(cd DEBUILD; tar -zcf privacyidea-server_${PI_VERSION}.orig.tar.gz --exclude=debian/* privacyidea-server.orig)
 	(cd ${BUILDDIR_SERVER}; dpkg-buildpackage -us -uc -k${SIGNKEY})
 
 all:
