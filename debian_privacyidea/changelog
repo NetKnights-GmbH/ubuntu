@@ -1,4 +1,4 @@
-privacyidea (3.0.2~dev1-1trusty) trusty; urgency=medium
+privacyidea (3.0.2~dev2-1trusty) trusty; urgency=medium
 
   Fixes:
   * Fix creation of table tokenover and update with PostgreSQL DB
