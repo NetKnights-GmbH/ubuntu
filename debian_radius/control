@@ -3,7 +3,7 @@ Maintainer: Cornelius Kölbel <cornelius@privacyidea.org>
 Section: net
 Priority: optional
 Build-Depends: debhelper (>= 7.4.3)
-Standards-Version: 3.9.6
+Standards-Version: 4.1.4
 
 
 Package: privacyidea-radius

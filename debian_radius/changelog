@@ -1,4 +1,4 @@
-privacyidea-radius (3.2-1bionic) bionic; urgency=medium
+privacyidea-radius (3.2-trusty) trusty; urgency=medium
 
   * Create an extra module name for privacyidea [Paul Lettich]
 
