@@ -17,14 +17,14 @@ GIT_VERSION=`echo ${VERSION} | sed -e s/\~//g`
 PI_VERSION=$(VERSION)
 
 ifndef REPO
-	REPO=${COMMUNITYREPO}
+  REPO=${COMMUNITYREPO}
 endif
 
+ifndef VERSION
+  $(error VERSION not set. Set VERSION to build like VERSION=3.0.1~dev7)
+endif
 
-clean:
-	rm -fr DEBUILD
-
-privacyidea:	
+privacyidea:
 	mkdir -p DEBUILD
 	rm -fr ${BUILDDIR_PI}
 	# Fetch the code from github
@@ -43,7 +43,7 @@ appliance:
 	mkdir -p DEBUILD
 	rm -fr ${BUILDDIR_APPLIANCE}
 	# Fetch the code from github
-	(cd DEBUILD; git clone https://github.com/NetKnights-GmbH/privacyidea-appliance pi-appliance.orig)	
+	(cd DEBUILD; git clone https://github.com/NetKnights-GmbH/privacyidea-appliance pi-appliance.orig)
 	(cd ${BUILDDIR_APPLIANCE}; git checkout v${GIT_VERSION})
 	(cd ${BUILDDIR_APPLIANCE}; git submodule init; git submodule update --recursive --remote)
 	# Remove the tests
@@ -65,7 +65,7 @@ radius:
 	# copy e.g. privacyidea_radius.install and postinstall, which depends on the series
 	cp ${BUILDDIR_RADIUS}/debian/${SERIES}/* ${BUILDDIR_RADIUS}/debian/
 	sed -e s/"trusty) trusty; urgency"/"${SERIES}) ${SERIES}; urgency"/g ${DEBIAN_RADIUS}/changelog > ${BUILDDIR_RADIUS}/debian/changelog
-	(cd DEBUILD; tar -zcf privacyidea-radius_${PI_VERSION}.orig.tar.gz --exclude=debian/* privacyidea-radius.orig)
+	(cd DEBUILD; tar -zcf privacyidea-radius_${PI_VERSION}.orig.tar.gz --exclude=debian/* --exclude=.git/* privacyidea-radius.orig)
 	(cd ${BUILDDIR_RADIUS}; dpkg-buildpackage -us -uc -k${SIGNKEY})
 
 server:
@@ -113,7 +113,7 @@ ifeq ($(REPO), $(ENTERPRISEREPO))
 	reprepro -b ${MYDIR}/${REPO}/${SERIES}/stable -V include ${SERIES} DEBUILD/pi-appliance_*.changes  || true
 endif
 
-push-lancelot:	
+push-lancelot:
 ifeq ($(REPO),$(COMMUNITYREPO))
 	@echo "**** Pushing to community repo ****"
 	rsync -r ${REPO}/${SERIES}/* root@lancelot:/srv/www/nossl/community/${SERIES}
@@ -125,9 +125,8 @@ ifeq ($(REPO),$(ENTERPRISEREPO))
 	rsync -r ${REPO}/xenial/* root@lancelot:/srv/www/apt/
 endif
 
-ifndef VERSION
-	$(error VERSION not set. Set VERSION to build like VERSION=3.0.1~dev7)
-endif
+clean:
+	rm -fr DEBUILD
 
 ### This check does not work, yet
 #ifeq ($(REPO),$(ENTERPRISEREPO))
@@ -135,6 +134,6 @@ endif
 #	# check if the VERSION number is OK for enterprise
 #	NUM=$(shell echo "$${VERSION}" | awk -F"." '{print NF-1}')
 #ifneq (${NUM}, 2)
-#	echo $(NUM)	
+#	echo $(NUM)
 #endif
 #endif
