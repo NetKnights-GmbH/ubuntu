@@ -1,4 +1,4 @@
-privacyidea (3.1~dev5-1trusty) trusty; urgency=medium
+privacyidea (3.1-1trusty) trusty; urgency=medium
 
   Features:
   * Allow user attributes in policy conditions (#1645)
@@ -69,7 +69,7 @@ privacyidea (3.1~dev5-1trusty) trusty; urgency=medium
   * Remove additional empty line in audit log in case of an error (#1707)
   * Fix enrollment of certificate tokens under Python 3 (#1799)
 
- -- NetKnights GmbH <release@netknights.it>  Fri, 23 Aug 2019 14:00:00 +0200
+ -- NetKnights GmbH <release@netknights.it>  Wed, 04 Sep 2019 09:30:00 +0200
 
 
 privacyidea (3.0.2-1trusty) trusty; urgency=medium
