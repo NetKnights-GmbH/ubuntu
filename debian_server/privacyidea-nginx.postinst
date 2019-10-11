@@ -14,6 +14,7 @@ fi
 USERNAME=privacyidea
 CERTDAYS=1095
 CERTKEYSIZE=4096
+MIGRATIONSDIR=/opt/privacyidea/lib/privacyidea/migrations/
 
 if test -f /etc/default/privacyidea; then
     . /etc/default/privacyidea
@@ -108,7 +109,7 @@ enable_nginx_uwsgi() {
 
 update_db() {
         # Upgrade the database
-	/opt/privacyidea/bin/privacyidea-schema-upgrade /usr/lib/privacyidea/migrations > /dev/null
+	/opt/privacyidea/bin/privacyidea-schema-upgrade $MIGRATIONSDIR > /dev/null
 }
 
 
@@ -132,7 +133,7 @@ case "$1" in
         if [ -z "$2" ]; then
 		# We are in the install step
 		# So we stamp the DB
-		/opt/privacyidea/bin/pi-manage db stamp -d /opt/privacyidea/lib/privacyidea/migrations/ head
+		/opt/privacyidea/bin/pi-manage db stamp -d $MIGRATIONSDIR head
 	else
 		# We are in an update step
 		update_db
