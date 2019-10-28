@@ -82,6 +82,12 @@ adapt_pi_cfg() {
 	    SECRET="$(tr -dc A-Za-z0-9_ </dev/urandom | head -c24)"
 	    echo "SECRET_KEY = '$SECRET'" >> /etc/privacyidea/pi.cfg
 	fi
+	if [ -n "$(grep '^SQLALCHEMY_DATABASE_URI\s*=\s*.mysql:.*$' /etc/privacyidea/pi.cfg)" ]; then
+	    #  We found an old mysql config file
+	    sed -i -e s/"\(^SQLALCHEMY_DATABASE_URI\s*=\s*.\)mysql:\(.*\)$"/"\1mysql+pymysql:\2"/g /etc/privacyidea/pi.cfg
+	    echo "# The SQLALCHEMY_DATABASE_URI was updated during the update to privacyIDEA 3.2" >> /etc/privacyidea/pi.cfg
+	fi
+
 }
 
 create_database() {
