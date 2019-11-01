@@ -15,6 +15,8 @@ USERNAME=privacyidea
 CERTDAYS=1095
 CERTKEYSIZE=4096
 MIGRATIONSDIR=/opt/privacyidea/lib/privacyidea/migrations/
+MYSQLFIX=/etc/mysql/conf.d/pi-maxkeylengthfix.cnfh
+
 
 if test -f /etc/default/privacyidea; then
     . /etc/default/privacyidea
@@ -91,6 +93,11 @@ adapt_pi_cfg() {
 }
 
 create_database() {
+        # Create the file with the MySQL Barracuda fix, if it does not exit
+        if [ ! -f $MYSQLFIX ]; then
+                printf "[mariadb]\ninnodb_large_prefix=on\ninnodb_file_format=Barracuda\n" > $MYSQLFIX
+                systemctl restart mysql
+        fi
 	# create the MYSQL database
 	if [ !$(grep "^SQLALCHEMY_DATABASE_URI" /etc/privacyidea/pi.cfg || true) ]; then
 	    USER="debian-sys-maint"
