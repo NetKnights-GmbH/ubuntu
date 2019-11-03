@@ -92,7 +92,7 @@ adapt_pi_cfg() {
 }
 
 create_database() {
-  # Create the file with the MySQL Barracuda fix, if it does not exit
+  # Create the file with the MySQL Barracuda fix, if it does not exist
   if [ ! -f $MYSQLFIX ]; then
     printf "[mariadb]\ninnodb_large_prefix=on\ninnodb_file_format=Barracuda\n" > /etc/mysql/conf.d/pi-maxkeylengthfix.cnf
     systemctl restart mysql
