@@ -5,6 +5,13 @@ privacyidea-server (3.2~dev1-2trusty) trusty; urgency=medium
 
  -- NetKnights GmbH <release@netknights.it>  Mon, 28 Oct 2019 11:30:00 +0200
 
+privacyidea-server (3.1.2-1trusty) trusty; urgency=medium
+
+  * Update version number
+
+ -- NetKnights GmbH <release@netknights.it>  Fri, 15 Nov 2019 11:30:00 +0200
+
+
 privacyidea-server (3.1.1-2trusty) trusty; urgency=medium
 
   * Fix the NGINX installation
