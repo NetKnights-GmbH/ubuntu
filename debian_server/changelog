@@ -1,9 +1,9 @@
-privacyidea-server (3.2~dev1-2trusty) trusty; urgency=medium
+privacyidea-server (3.2~dev2-1trusty) trusty; urgency=medium
 
   * Add Barracuda MySQL fix to NGinX installation
   * Do not restart MySQL database, if Barracuda fix is already in place
 
- -- NetKnights GmbH <release@netknights.it>  Mon, 28 Oct 2019 11:30:00 +0200
+ -- NetKnights GmbH <release@netknights.it>  Tue, 19 Nov 2019 11:30:00 +0200
 
 privacyidea-server (3.1.2-1trusty) trusty; urgency=medium
 
