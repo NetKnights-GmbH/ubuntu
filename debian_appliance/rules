@@ -3,4 +3,7 @@
 %:
 	dh $@ --with python-virtualenv
 
+override_dh_virtualenv:
+	dh_virtualenv --python python3
+
 
