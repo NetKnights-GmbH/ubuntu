@@ -71,7 +71,7 @@ create_database() {
 
 update_db() {
 	# Upgrade the database
-	privacyidea-schema-upgrade /usr/lib/privacyidea/migrations > /dev/null
+	/opt/privacyidea/bin/privacyidea-schema-upgrade /opt/privacyidea/lib/privacyidea/migrations > /dev/null
 }
 
 case "$1" in
@@ -81,7 +81,16 @@ case "$1" in
 	adapt_pi_cfg
 	create_database
 	create_files
-	update_db
+	if [ -z "$2" ]; then
+		# We are in the install step
+		# So we stamp the DB
+		touch /tmp/pi-install
+		/opt/privacyidea/bin/pi-manage db stamp -d /opt/privacyidea/lib/privacyidea/migrations/ head
+	else
+		# We are in an update step
+		touch /tmp/pi-upgrade
+		update_db
+	fi
   ;;
 
   abort-upgrade|abort-remove|abort-deconfigure)
