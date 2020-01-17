@@ -1,4 +1,4 @@
-privacyidea (3.2.2~dev4-1trusty) trusty; urgency=medium
+privacyidea (3.2.2-1trusty) trusty; urgency=medium
 
   Fixes:
   * Fix Popen calls like with pi-manage backup restore
