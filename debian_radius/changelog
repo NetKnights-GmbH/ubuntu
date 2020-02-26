@@ -1,3 +1,12 @@
+privacyidea-radius (3.3-trusty) trusty; urgency=medium
+
+  * Allow multiple same reply attributes
+    e can now do attribute matching to allow multiple RADIUS
+    attributes in the response like several Class attributes,
+    that are usually used for putting users into groups.
+
+ -- NetKnights GmbH <release@netknights.it>  Wed, 26 Feb 2020 15:30:00 +0200
+
 privacyidea-radius (3.2-trusty) trusty; urgency=medium
 
   * Create an extra module name for privacyidea [Paul Lettich]
