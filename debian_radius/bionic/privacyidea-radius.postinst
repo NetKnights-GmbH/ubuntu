@@ -16,7 +16,7 @@ activate_perl() {
 }
 
 activate_site() {
-	rm -f /etc/freeradius/3.0/sites-enabled/*
+	rm -f /etc/freeradius/3.0/sites-enabled/* || true
 	ln -s /etc/freeradius/3.0/sites-available/privacyidea /etc/freeradius/3.0/sites-enabled/
 }
 

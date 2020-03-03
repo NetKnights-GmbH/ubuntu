@@ -12,7 +12,7 @@ if [ -f /usr/share/dbconfig-common/dpkg/postinst.pgsql  ]; then
 fi
 
 activate_site() {
-	rm /etc/freeradius/sites-enabled/*
+	rm /etc/freeradius/sites-enabled/* || true
 	ln -s /etc/freeradius/sites-available/privacyidea /etc/freeradius/sites-enabled/
 }
 
