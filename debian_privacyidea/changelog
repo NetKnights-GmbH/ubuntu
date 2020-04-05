@@ -1,3 +1,68 @@
+privacyidea (3.3-1trusty) trusty; urgency=medium
+
+  Features:
+    * New token type: WebAuthn/FIDO2 token is initially supported by privacyIDEA (#1468)
+    * New token type: Indexed Secret token allows user
+      to authenticate with a pre-known secret that can be
+      initialized from the user store. (#1986)
+    * New Event Handler Module: Logging module enables custom event-driven logging (#1580)
+
+  Enhancements:
+    * Event Handler:
+      * The OTP token QR code can now be added not only inline but also as an attachment
+        to email notifications (#1226)
+    * Policies:
+      * Added a policy to define the allowed characters for PINs (#2051)
+      * Add policies to limit the number of destinct tokentypes per user (#1375)
+      * Improved distinction between the username of the administrator
+        and the username of the user. Add an admin username to policies. (#1867)
+        Thus allowing:
+        * User attribute conditions in admin policies
+        * default settings for hashlib and otplen for HOTP and TOTP token
+         and default timestep for TOTP token can now be dependent on
+         admin user and for which user the admin does the enrollment
+        * Enrollment settings for push tokens can distinguish better
+         between admin users and user
+        * Random PIN settings can be user dependent
+    * WebUI
+      * Added the option to filter tokens by tokenrealm (#545)
+      * Prior to enrollment of soft tokens, such as HOTP, TOTP and PUSH the user is
+        offered with a QR codes to direct him to the Authenticator App stores (#1919).
+      * Adding version hashes to WebUI components to avoid working with outdated
+        templates (#1871)
+      * Updated bootstrap and AngularJS (#830)
+      * Rework policy matching (#1691 #2024 #2038)
+    * Documentation
+      * The documentation was restructured and updated (#1967 #1981 #1504 #2049 #2089 #2090).
+    * Tools
+      * Added a migration script to update the database schema from 2.23.5 to 3.2.2 (#2040)
+    * Misc
+      * Added the remote serial to the tokeninfo of a remote token to better track
+        authenticated devices (#2031)
+      * Use dictConfig instead of fileConfig to read configurations (#2059)
+      * Support logging configuration file in YAML format (#2080)
+      * Support custom audit logger names (#2106)
+
+  Fixes:
+    * Fix unauthorized statistics view (#1238)
+    * Fix a bug which caused an exception during PSKC key file container import (#1915)
+    * Fix link on privacyIDEA logo in the WebUI when no user is logged in (#1944)
+    * Updated CA files in testdata which were about to expire (#1960)
+    * Fix API endpoints to avoid redirects (#1999)
+    * Fix url_decode padding before it could cause any issues (#2000)
+    * Initialize rtype in user_object correctly (#2007)
+    * Fix an inconsistency of start_tls with postgres SQL (#2025)
+    * Fix wrong type splitting of questionnaire token (#2026)
+    * Fix a bug which could cause missing audit entries when using the
+      ContainerAudit module (#2029)
+    * Fix a bug which prevented defining an SQL resolver without a password (#2030)
+    * Fix missing "position" argument on event import with pi-manage (#2036)
+    * Fix timing issues in tests (#2041)
+    * Fix documentation (#2049)
+    * Fix sorting token table by column (#2111)
+
+ -- NetKnights GmbH <release@netknights.it>  Sun, 05 Apr 2020 22:00:00 +0200
+
 privacyidea (3.2.2-1trusty) trusty; urgency=medium
 
   Fixes:
