@@ -1,10 +1,10 @@
-privacyidea (3.3.1~dev1-1trusty) trusty; urgency=medium
+privacyidea (3.3.1-1trusty) trusty; urgency=medium
 
   Fixes:
     * Fix broken U2F support (#2157)
     * Fix creation of PGP keys with pi-maange (#2165)
 
- -- NetKnights GmbH <release@netknights.it>  Tue, 28 Apr 2020 15:30:00 +0200
+ -- NetKnights GmbH <release@netknights.it>  Wed, 29 Apr 2020 19:30:00 +0200
 
 privacyidea (3.3-1trusty) trusty; urgency=medium
 
