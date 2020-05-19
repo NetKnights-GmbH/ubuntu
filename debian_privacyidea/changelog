@@ -1,12 +1,11 @@
-privacyidea (3.3.3~dev3-1trusty) trusty; urgency=medium
+privacyidea (3.3.3-1trusty) trusty; urgency=medium
 
   Fixes:
     * Fix failing Challenge Response in WebUI (#2192)
     * Add better logging for contradciting policy calls
     * Case insensitive user check failsafe in policy matching (#2198)
-    * Improve policy logging
 
- -- NetKnights GmbH <release@netknights.it>  Sun, 17 May 2020 10:00:00 +0200
+ -- NetKnights GmbH <release@netknights.it>  Tue, 19 May 2020 10:00:00 +0200
 
 privacyidea (3.3.2-1trusty) trusty; urgency=medium
 
