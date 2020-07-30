@@ -33,7 +33,8 @@ case "$1" in
   activate_perl
 	activate_site
   deactivate_eap
-	service freeradius restart
+  systemctl enable freeradius
+  systemctl restart freeradius
   ;;
 
   abort-upgrade|abort-remove|abort-deconfigure)
