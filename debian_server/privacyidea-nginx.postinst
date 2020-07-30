@@ -33,6 +33,7 @@ create_user() {
 create_files() {
         mkdir -p /var/log/privacyidea
         mkdir -p /var/lib/privacyidea
+	mkdir -p /etc/privacyidea/scripts
         touch /var/log/privacyidea/privacyidea.log
 	/opt/privacyidea/bin/pi-manage create_enckey || true
 	/opt/privacyidea/bin/pi-manage createdb || true
