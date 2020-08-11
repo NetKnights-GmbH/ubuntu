@@ -27,9 +27,10 @@ endif
 privacyidea:
 	mkdir -p DEBUILD
 	rm -fr ${BUILDDIR_PI}
-	# Fetch the code from github
-	(cd DEBUILD; git clone https://github.com/privacyidea/privacyidea.git privacyidea.orig)
+	# Fetch the code from github with its submodules
+	(cd DEBUILD; git clone --recursive https://github.com/privacyidea/privacyidea.git privacyidea.orig)
 	(cd ${BUILDDIR_PI}; git checkout v${GIT_VERSION})
+	#(cd ${BUILDDIR_PI}; git submodule init; git submodule update --recursive --remote)
 	(cd ${BUILDDIR_PI}; rm -fr tests)
 	mkdir -p ${BUILDDIR_PI}/debian
 	cp -r ${DEBIAN_PI}/* ${BUILDDIR_PI}/debian/

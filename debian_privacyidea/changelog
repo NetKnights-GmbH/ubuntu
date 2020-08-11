@@ -1,3 +1,20 @@
+privacyidea (3.4~dev3-2trusty) trusty; urgency=medium
+
+  Add missing submodule webauth.js to build process.
+
+ -- NetKnights GmbH <release@netknights.it>  Tue, 11 Aug 2020 08:30:00 +0200
+
+
+privacyidea (3.4~dev3-1trusty) trusty; urgency=medium
+
+  Features:
+  Enahncements:
+  Fixes:
+
+  According to changelog
+
+ -- NetKnights GmbH <release@netknights.it>  Tue, 11 Aug 2020 08:15:00 +0200
+
 privacyidea (3.3.3-1trusty) trusty; urgency=medium
 
   Fixes:
