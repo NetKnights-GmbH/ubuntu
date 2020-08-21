@@ -1,3 +1,13 @@
+privacyidea (3.4~dev5-1trusty) trusty; urgency=medium
+
+   * Add HTTP Resolver that can read users from web services
+     via JSON responses (#2083)
+   * PUSH token can communicate with privacyIDEA via polling
+     as fallback to Google Push Service or Apple Notification Service (#2262)
+
+
+ -- NetKnights GmbH <release@netknights.it>  Fri, 21 Aug 2020 12:15:00 +0200
+
 privacyidea (3.4~dev4-1trusty) trusty; urgency=medium
 
   Features:
