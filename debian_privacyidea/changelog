@@ -1,4 +1,4 @@
-privacyidea (3.4~dev5-1trusty) trusty; urgency=medium
+privacyidea (3.4~dev7-1trusty) trusty; urgency=medium
 
    * Add HTTP Resolver that can read users from web services
      via JSON responses (#2083)
@@ -6,7 +6,7 @@ privacyidea (3.4~dev5-1trusty) trusty; urgency=medium
      as fallback to Google Push Service or Apple Notification Service (#2262)
 
 
- -- NetKnights GmbH <release@netknights.it>  Fri, 21 Aug 2020 12:15:00 +0200
+ -- NetKnights GmbH <release@netknights.it>  Fri, 04 Sep 2020 07:00:00 +0200
 
 privacyidea (3.4~dev4-1trusty) trusty; urgency=medium
 
