@@ -1,4 +1,4 @@
-privacyidea (3.4~dev8-1trusty) trusty; urgency=medium
+privacyidea (3.4-1trusty) trusty; urgency=medium
 
     Features:
      * Add ScriptSMSProvider, that can send SMS through external
@@ -70,7 +70,7 @@ privacyidea (3.4~dev8-1trusty) trusty; urgency=medium
      * Fix token settings for Yubikey in UI enrollment (#2365, #2366)
 
 
- -- NetKnights GmbH <release@netknights.it>  Sun, 06 Sep 2020 09:00:00 +0200
+ -- NetKnights GmbH <release@netknights.it>  Tue, 08 Sep 2020 00:00:00 +0200
 
 privacyidea (3.4~dev4-1trusty) trusty; urgency=medium
 
