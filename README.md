@@ -1,4 +1,4 @@
-This is buildenvironment for privacyIDEA on Ubuntu 16.04 and 18.04.
+This is buildenvironment for privacyIDEA on Ubuntu 16.04, 18.04 and 20.04.
 
 How to proceed:
 
