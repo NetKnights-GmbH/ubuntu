@@ -1,3 +1,10 @@
+privacyidea-server (3.5~dev1-1trusty) trusty; urgency=medium
+
+  * set version
+
+ -- NetKnights GmbH <release@netknights.it>  Sun, 21 Nov 2020 08:30:00 +0200
+
+
 privacyidea-server (3.4.1-1trusty) trusty; urgency=medium
 
   * update version number
@@ -24,7 +31,7 @@ privacyidea-server (3.4~dev3-1trusty) trusty; urgency=medium
  -- NetKnights GmbH <release@netknights.it>  Thu, 30 Jul 2020 08:00:00 +0200
 
 privacyidea-server (3.3.3-1trusty) trusty; urgency=medium
- 
+
   * update version number
 
  -- NetKnights GmbH <release@netknights.it>  Tue, 19 May 2020 10:00:00 +0200
@@ -115,6 +122,5 @@ privacyidea-server (3.0.1-1trusty) trusty; urgency=medium
 privacyidea-server (3.0-1trusty) trusty; urgency=medium
 
   * Meta Package for running privacyIDEA in Webserver
- 
- -- NetKnights GmbH <release@netknights.it>  Wed, 10 Apr 2019 10:30:00 +0200
 
+ -- NetKnights GmbH <release@netknights.it>  Wed, 10 Apr 2019 10:30:00 +0200
