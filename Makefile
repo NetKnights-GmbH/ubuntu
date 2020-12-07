@@ -87,14 +87,20 @@ init-repo:
 	mkdir -p $(MYDIR)/${REPO}/xenial/devel/conf
 	mkdir -p $(MYDIR)/${REPO}/bionic/stable/conf
 	mkdir -p $(MYDIR)/${REPO}/bionic/devel/conf
+	mkdir -p $(MYDIR)/${REPO}/focal/stable/conf
+	mkdir -p $(MYDIR)/${REPO}/focal/devel/conf
 	cp distributions/xenial-devel ${REPO}/xenial/devel/conf/distributions
 	cp distributions/xenial-stable ${REPO}/xenial/stable/conf/distributions
 	cp distributions/bionic-devel ${REPO}/bionic/devel/conf/distributions
 	cp distributions/bionic-stable ${REPO}/bionic/stable/conf/distributions
+	cp distributions/focal-devel ${REPO}/focal/devel/conf/distributions
+	cp distributions/focal-stable ${REPO}/focal/stable/conf/distributions
 	reprepro -b $(MYDIR)/${REPO}/xenial/stable createsymlinks
 	reprepro -b $(MYDIR)/${REPO}/xenial/devel createsymlinks
 	reprepro -b $(MYDIR)/${REPO}/bionic/stable createsymlinks
 	reprepro -b $(MYDIR)/${REPO}/bionic/devel createsymlinks
+	reprepro -b $(MYDIR)/${REPO}/focal/stable createsymlinks
+	reprepro -b $(MYDIR)/${REPO}/focal/devel createsymlinks
 
 add-repo-devel:
 	reprepro -b ${MYDIR}/${REPO}/${SERIES}/devel -V include ${SERIES} DEBUILD/privacyidea-server_*.changes || true
