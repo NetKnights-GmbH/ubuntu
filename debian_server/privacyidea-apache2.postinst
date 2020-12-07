@@ -1,5 +1,6 @@
 #!/bin/sh
 # see: dh_installdeb(1)
+# OS level
 
 set -e
 
@@ -105,9 +106,11 @@ create_database() {
 	    PASSWORD=$(grep "^password" /etc/mysql/debian.cnf | sort -u | awk '{print $3}')
 	    NPW="$(tr -dc A-Za-z0-9_ </dev/urandom | head -c12)"
 	    mysql -u $USER --password=$PASSWORD -e "create database pi;" || true
-	    mysql -u $USER --password=$PASSWORD -e "grant all privileges on pi.* to 'pi'@'localhost' identified by '$NPW';"
-	    echo "SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://pi:$NPW@localhost/pi?charset=utf8'" >> /etc/privacyidea/pi.cfg
-	fi
+            mysql -u $USER --password=$PASSWORD -e "create user 'pi'@'localhost' IDENTIFIED BY '$NPW';"
+            mysql -u $USER --password=$PASSWORD -e "grant all privileges on pi.* to 'pi'@'localhost';"
+            echo "SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://pi:$NPW@localhost/pi?charset=utf8'" >> /etc/privacyidea/pi.cfg
+            echo "DB created"
+        fi
 }
 
 enable_apache() {
