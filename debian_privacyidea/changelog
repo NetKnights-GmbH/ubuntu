@@ -1,8 +1,8 @@
-privacyidea (3.5~dev4-1trusty) trusty; urgency=medium
+privacyidea (3.5~dev4-2trusty) trusty; urgency=medium
 
   * set version
 
- -- NetKnights GmbH <release@netknights.it>  Mon, 14 Dec 2020 14:30:00 +0200
+ -- NetKnights GmbH <release@netknights.it>  Tue, 15 Dec 2020 14:30:00 +0200
  
 
 privacyidea (3.4.1-1trusty) trusty; urgency=medium
