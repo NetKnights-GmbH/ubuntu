@@ -14,7 +14,17 @@ ENTERPRISEREPO=enterpriserepo
 SIGNKEY=09404ABBEDB3586DEDE4AD2200F70D62AE250082
 
 GIT_VERSION=`echo ${VERSION} | sed -e s/\~//g`
+# If this is a devel version
+DEVEL_VERSION=`echo ${VERSION} | grep "dev"`
 PI_VERSION=$(VERSION)
+# If the version has two dots like 3.5.1
+MINOR_VERSION=`echo ${VERSION} | sed -e s/[0-9]//g | grep '\.\.'`
+
+ifdef DEVEL_VERSION
+	BRANCH="devel"
+else
+	BRANCH="stable"
+endif
 
 ifndef REPO
   REPO=${COMMUNITYREPO}
@@ -23,6 +33,7 @@ endif
 ifndef VERSION
   $(error VERSION not set. Set VERSION to build like VERSION=3.0.1~dev7)
 endif
+
 
 privacyidea:
 	mkdir -p DEBUILD
@@ -38,9 +49,12 @@ privacyidea:
 	mv ${BUILDDIR_PI}/LICENSE ${BUILDDIR_PI}/debian/copyright
 	sed -e s/"trusty) trusty; urgency"/"${SERIES}) ${SERIES}; urgency"/g ${DEBIAN_PI}/changelog > ${BUILDDIR_PI}/debian/changelog
 	(cd DEBUILD; tar -zcf privacyidea_${PI_VERSION}.orig.tar.gz --exclude=debian/* privacyidea.orig)
+	# copy existing tgz from repository and overwrite the one we just created!
+	scp root@lancelot:/srv/www/nossl/community/${SERIES}/${BRANCH}/pool/main/p/privacyidea/privacyidea_${PI_VERSION}.orig.tar.gz DEBUILD/ || true
 	(cd ${BUILDDIR_PI}; DH_VIRTUALENV_INSTALL_ROOT=/opt/ DH_VERBOSE=1 dpkg-buildpackage -us -uc -k${SIGNKEY})
 
 appliance:
+	echo ${DEVEL_VERSION}
 	mkdir -p DEBUILD
 	rm -fr ${BUILDDIR_APPLIANCE}
 	# Fetch the code from github
@@ -76,6 +90,8 @@ server:
 	#mv ${BUILDDIR}/LICENSE ${BUILDDIR}/debian/copyright
 	sed -e s/"trusty) trusty; urgency"/"${SERIES}) ${SERIES}; urgency"/g ${DEBIAN_SERVER}/changelog > ${BUILDDIR_SERVER}/debian/changelog
 	(cd DEBUILD; tar -zcf privacyidea-server_${PI_VERSION}.orig.tar.gz --exclude=debian/* privacyidea-server.orig)
+	# copy existing tgz from repository and overwrite the one we just created!
+	scp root@lancelot:/srv/www/nossl/community/${SERIES}/${BRANCH}/pool/main/p/privacyidea-server/privacyidea-server_${PI_VERSION}.orig.tar.gz DEBUILD/ || true
 	(cd ${BUILDDIR_SERVER}; dpkg-buildpackage -sa -us -uc -k${SIGNKEY})
 
 all:
@@ -103,6 +119,8 @@ init-repo:
 	reprepro -b $(MYDIR)/${REPO}/focal/devel createsymlinks
 
 add-repo-devel:
+	cp ${MYDIR}/${REPO}/${SERIES}/devel/pool/main/p/privacyidea-server/privacyidea-server_${PI_VERSION}.orig.tar.gz DEBUILD/ || true
+	cp ${MYDIR}/${REPO}/${SERIES}/devel/pool/main/p/privacyidea/privacyidea_${PI_VERSION}.orig.tar.gz DEBUILD/ || true
 	reprepro -b ${MYDIR}/${REPO}/${SERIES}/devel -V include ${SERIES} DEBUILD/privacyidea-server_*.changes || true
 	reprepro -b ${MYDIR}/${REPO}/${SERIES}/devel -V include ${SERIES} DEBUILD/privacyidea_*.changes || true
 	reprepro -b ${MYDIR}/${REPO}/${SERIES}/devel -V include ${SERIES} DEBUILD/privacyidea-radius_*.changes || true
@@ -112,6 +130,16 @@ ifeq ($(REPO), $(ENTERPRISEREPO))
 endif
 
 add-repo-stable:
+ifneq ($(BRANCH), "stable")
+	@echo "You can only push stable versions to the stable repository!"
+	false
+endif
+ifeq ($(REPO), $(ENTERPRISEREPO))
+ifneq ($(MINOR_VERSION), "")
+	@echo "Only patch versions like 3.5.1 are allowed in enterprise repo!"
+	false
+endif
+endif
 	reprepro -b ${MYDIR}/${REPO}/${SERIES}/stable -V include ${SERIES} DEBUILD/privacyidea-server_*.changes  || true
 	reprepro -b ${MYDIR}/${REPO}/${SERIES}/stable -V include ${SERIES} DEBUILD/privacyidea_*.changes  || true
 	reprepro -b ${MYDIR}/${REPO}/${SERIES}/stable -V include ${SERIES} DEBUILD/privacyidea-radius_*.changes  || true
@@ -133,13 +161,3 @@ endif
 
 clean:
 	rm -fr DEBUILD
-
-### This check does not work, yet
-#ifeq ($(REPO),$(ENTERPRISEREPO))
-#	echo "This is an enterp"
-#	# check if the VERSION number is OK for enterprise
-#	NUM=$(shell echo "$${VERSION}" | awk -F"." '{print NF-1}')
-#ifneq (${NUM}, 2)
-#	echo $(NUM)
-#endif
-#endif
