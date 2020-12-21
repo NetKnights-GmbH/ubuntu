@@ -15,16 +15,10 @@ SIGNKEY=09404ABBEDB3586DEDE4AD2200F70D62AE250082
 
 GIT_VERSION=`echo ${VERSION} | sed -e s/\~//g`
 # If this is a devel version
-DEVEL_VERSION=`echo ${VERSION} | grep "dev"`
+#BRANCH=`[ echo ${VERSION} | grep "dev"] && { echo devel; } || { echo stable; }`
 PI_VERSION=$(VERSION)
 # If the version has two dots like 3.5.1
 MINOR_VERSION=`echo ${VERSION} | sed -e s/[0-9]//g | grep '\.\.'`
-
-ifdef DEVEL_VERSION
-	BRANCH="devel"
-else
-	BRANCH="stable"
-endif
 
 ifndef REPO
   REPO=${COMMUNITYREPO}
@@ -32,6 +26,10 @@ endif
 
 ifndef VERSION
   $(error VERSION not set. Set VERSION to build like VERSION=3.0.1~dev7)
+endif
+
+ifndef BRANCH
+  $(error BRANCH not set. Set BRANCH to either 'stable' or 'devel')
 endif
 
 
@@ -54,7 +52,6 @@ privacyidea:
 	(cd ${BUILDDIR_PI}; DH_VIRTUALENV_INSTALL_ROOT=/opt/ DH_VERBOSE=1 dpkg-buildpackage -us -uc -k${SIGNKEY})
 
 appliance:
-	echo ${DEVEL_VERSION}
 	mkdir -p DEBUILD
 	rm -fr ${BUILDDIR_APPLIANCE}
 	# Fetch the code from github
@@ -130,10 +127,10 @@ ifeq ($(REPO), $(ENTERPRISEREPO))
 endif
 
 add-repo-stable:
-ifneq ($(BRANCH), "stable")
-	@echo "You can only push stable versions to the stable repository!"
-	false
+ifneq ($(BRANCH), stable)
+	$(error "Only stable version allowed in this repository! >$(BRANCH)<")
 endif
+
 ifeq ($(REPO), $(ENTERPRISEREPO))
 ifneq ($(MINOR_VERSION), "")
 	@echo "Only patch versions like 3.5.1 are allowed in enterprise repo!"
