@@ -1,4 +1,4 @@
-privacyidea (3.5~dev5-2trusty) trusty; urgency=medium
+privacyidea (3.5-1trusty) trusty; urgency=medium
 
   Features:
   * 4Eyes token uses multi challenge authentication (#2317)
@@ -62,7 +62,7 @@ privacyidea (3.5~dev5-2trusty) trusty; urgency=medium
   * Fix challenge response with multiple FIDO2 tokens (#2092)
 
 
- -- NetKnights GmbH <release@netknights.it>  Sun, 20 Dec 2020 11:40:00 +0200
+ -- NetKnights GmbH <release@netknights.it>  Tue, 22 Dec 2020 00:30:00 +0200
  
 
 privacyidea (3.4.1-1trusty) trusty; urgency=medium
