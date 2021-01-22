@@ -11,12 +11,14 @@
 #	dh_virtualenv --upgrade-pip
 #
 override_dh_virtualenv:
+ifeq ($(shell lsb_release -rs), 16.04)
+	dh_virtualenv --python python3 --preinstall=setuptools==50.3.2
+else
 	dh_virtualenv --python python3
+endif
 
 override_dh_shlibdeps:
 	dh_shlibdeps --exclude=psycopg2 --exclude=libz --exclude=png16  --exclude=Pillow.libs
 
 override_dh_strip:
 	dh_strip --exclude=cffi --exclude=PIL --exclude=Pillow --exclude=psycopg2
-
-

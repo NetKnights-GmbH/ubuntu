@@ -1,5 +1,5 @@
 # Do not change this
-SERIES=`lsb_release -c | cut -d: -f2 | sed -e s/"\s"//g`
+SERIES=$(shell lsb_release -cs)
 BUILDDIR_PI=DEBUILD/privacyidea.orig
 BUILDDIR_SERVER=DEBUILD/privacyidea-server.orig
 BUILDDIR_RADIUS=DEBUILD/privacyidea-radius.orig
