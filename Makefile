@@ -1,5 +1,5 @@
 # Do not change this
-SERIES=`lsb_release -c | cut -d: -f2 | sed -e s/"\s"//g`
+SERIES := $(shell lsb_release -cs)
 BUILDDIR_PI=DEBUILD/privacyidea.orig
 BUILDDIR_SERVER=DEBUILD/privacyidea-server.orig
 BUILDDIR_RADIUS=DEBUILD/privacyidea-radius.orig
@@ -43,6 +43,10 @@ privacyidea:
 	(cd ${BUILDDIR_PI}; rm -fr tests)
 	mkdir -p ${BUILDDIR_PI}/debian
 	cp -r ${DEBIAN_PI}/* ${BUILDDIR_PI}/debian/
+	# in case of a xenial (16.04) build, use a seperate rule file
+ifeq ($(SERIES),xenial)
+	mv ${BUILDDIR_PI}/debian/rules.xenial ${BUILDDIR_PI}/debian/rules
+endif
 	cp -r deploy ${BUILDDIR_PI}/
 	mv ${BUILDDIR_PI}/LICENSE ${BUILDDIR_PI}/debian/copyright
 	sed -e s/"trusty) trusty; urgency"/"${SERIES}) ${SERIES}; urgency"/g ${DEBIAN_PI}/changelog > ${BUILDDIR_PI}/debian/changelog
