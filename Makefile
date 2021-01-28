@@ -136,7 +136,7 @@ ifneq ($(BRANCH), stable)
 endif
 
 ifeq ($(REPO), $(ENTERPRISEREPO))
-ifneq ($(MINOR_VERSION), "")
+ifeq ($(MINOR_VERSION), "")
 	@echo "Only patch versions like 3.5.1 are allowed in enterprise repo!"
 	false
 endif
