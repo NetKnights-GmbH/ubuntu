@@ -1,17 +1,13 @@
-privacyidea (3.5.1~dev3-1trusty) trusty; urgency=medium
-
-  Fixes:
-  * Fix requierments (#2598)
-
- -- NetKnights GmbH <release@netknights.it>  Wed, 27 Jan 2021 12:30:00 +0200
-
-privacyidea (3.5.1~dev2-1trusty) trusty; urgency=medium
+privacyidea (3.5.1-1trusty) trusty; urgency=medium
 
   Fixes:
   * Fix DB migration script for update from prior of 3.3. (#2582)
   * Fix the internal interface of container audit module (#2562)
+  * Fix tokeninfo value filter with Oracle db (#2602)
+  * Fix requierments (#2598)
+  * Add missing headers to /auth request (#2599)
 
- -- NetKnights GmbH <release@netknights.it>  Wed, 27 Jan 2021 09:30:00 +0200
+ -- NetKnights GmbH <release@netknights.it>  Thu, 28 Jan 2021 12:30:00 +0200
 
 
 privacyidea (3.5-1trusty) trusty; urgency=medium
