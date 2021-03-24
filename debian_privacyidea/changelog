@@ -1,3 +1,15 @@
+privacyidea (3.5.2-1trusty) trusty; urgency=medium
+
+  Fixes:
+  * Add serial to the request object in /ttype/ endpoint (#2605)
+  * Fix missing audit entries missing_line and sig_check (#2627)
+  * Fix backup on Ubuntu 20.04 (#2646)
+  * Fix missing priority in policy import (#2643)
+  * Fix DB migrate URI if it contains char % (#2661)
+  * Fix long default POOLING_LOOP_TIMEOUT (#2662)
+
+ -- NetKnights GmbH <release@netknights.it>  Wed, 24 Mar 2021 12:30:00 +0200
+
 privacyidea (3.5.1-1trusty) trusty; urgency=medium
 
   Fixes:
