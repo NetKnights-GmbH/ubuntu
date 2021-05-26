@@ -1,3 +1,9 @@
+privacyidea (3.6~dev3-1trusty) trusty; urgency=medium
+
+  * dummy line
+
+ -- NetKnights GmbH <release@netknights.it>  Tue, 25 May 2021 12:30:00 +0200
+
 privacyidea (3.5.2-1trusty) trusty; urgency=medium
 
   Fixes:
