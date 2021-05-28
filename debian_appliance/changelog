@@ -1,4 +1,4 @@
-pi-appliance (3.2~dev1) xenial; urgency=low
+pi-appliance (3.2~dev2) xenial; urgency=low
 
   * Add redundancy setup via SSL for focal
 
