@@ -1,4 +1,4 @@
-privacyidea (3.6~dev9-1trusty) trusty; urgency=medium
+privacyidea (3.6-1trusty) trusty; urgency=medium
 
   Features:
   * Add custom user attributes that can be managed within privacyIDEA #680
@@ -53,7 +53,7 @@ privacyidea (3.6~dev9-1trusty) trusty; urgency=medium
   * Save fractions of seconds in the audit log #2706
   * Fix pi-manage restore #2728
 
- -- NetKnights GmbH <release@netknights.it>  Sat, 05 Jun 2021 12:30:00 +0200
+ -- NetKnights GmbH <release@netknights.it>  Mon, 05 Jun 2021 12:30:00 +0200
 
 privacyidea (3.5.2-1trusty) trusty; urgency=medium
 
