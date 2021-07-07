@@ -26,6 +26,7 @@ privacyidea (3.6-1trusty) trusty; urgency=medium
   * Policy "add_user_in_response" also checks for user-realms #2642
   * Stamp the database version automatically during installation #2708
   * Audit Rotation is automatically added on new installation #1427
+  *
 
   Documentation:
   * Add note about SMS text formats #2151
