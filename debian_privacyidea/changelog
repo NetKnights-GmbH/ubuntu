@@ -1,3 +1,13 @@
+privacyidea (3.6.1~dev1-1trusty) trusty; urgency=medium
+
+  Fixes:
+  * Remove importlib-metadata from doc requirements
+  * Add a safe_store feature #2794
+  * Decode URL parameters for forms #2800
+  * Prepare ADFS subscription #2801
+
+ -- NetKnights GmbH <release@netknights.it>  Thu, 08 Jul 2021 12:30:00 +0200
+
 privacyidea (3.6-1trusty) trusty; urgency=medium
 
   Features:
