@@ -1,8 +1,8 @@
-pi-appliance (3.2~dev3) xenial; urgency=low
+pi-appliance (3.2) xenial; urgency=low
 
   * Add redundancy setup via SSL for focal
 
- -- NetKnights GmbH <release@netknights.it>  Fri, 28 May 2021 12:00:00 +0200
+ -- NetKnights GmbH <release@netknights.it>  Thu, 22 Jul 2021 12:00:00 +0200
 
 pi-appliance (3.1.1) xenial; urgency=low
 
