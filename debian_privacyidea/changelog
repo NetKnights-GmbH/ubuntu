@@ -1,9 +1,10 @@
-privacyidea (3.6.2~dev1-1trusty) trusty; urgency=medium
+privacyidea (3.6.2-1trusty) trusty; urgency=medium
 
-  Fixes:
-  * dummy line
+  Features:
+  * Add custom user attributes that can be managed within privacyIDEA #680
+  * Extended policy conditions can match on any token attribute #2590
 
- -- NetKnights GmbH <release@netknights.it>  Wed, 21 Jul 2021 12:00:00 +0200
+ -- NetKnights GmbH <release@netknights.it>  Thu, 22 Jul 2021 12:00:00 +0200
 
 privacyidea (3.6.1-1trusty) trusty; urgency=medium
 
