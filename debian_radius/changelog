@@ -1,4 +1,4 @@
-privacyidea-radius (3.4.1-trusty) trusty; urgency=medium
+privacyidea-radius (3.4.1-2trusty) trusty; urgency=medium
 
   * Fix the urlencoding of username and password to work
     with privacyIDEA 3.6. (#50)
