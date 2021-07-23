@@ -12,7 +12,7 @@ if [ -f /usr/share/dbconfig-common/dpkg/postinst.pgsql  ]; then
 fi
 
 activate_perl() {
-  ln -s /etc/freeradius/3.0/mods-available/mods-perl-privacyidea /etc/freeradius/3.0/mods-enabled/
+  ln -sf /etc/freeradius/3.0/mods-available/mods-perl-privacyidea /etc/freeradius/3.0/mods-enabled/
 }
 
 activate_site() {
