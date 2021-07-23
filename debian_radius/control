@@ -8,7 +8,7 @@ Standards-Version: 4.1.4
 
 Package: privacyidea-radius
 Architecture: all
-Depends: ${misc:Depends}, libwww-perl, libconfig-inifiles-perl, libdata-dump-perl, libtry-tiny-perl, freeradius, libjson-perl, liblwp-protocol-https-perl
+Depends: ${misc:Depends}, libwww-perl, libconfig-inifiles-perl, libdata-dump-perl, libtry-tiny-perl, freeradius, libjson-perl, liblwp-protocol-https-perl, liburi-encode-perl
 Description: FreeRADIUS module for privacyIDEA, OTP authentication
  This is a perl script, that is used in FreeRADIUS rlm_perl
  to forward the authentication request from the RADIUS server
