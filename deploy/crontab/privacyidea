@@ -1,2 +1,5 @@
 # Run the privacyidea-cron runner every 5 minutes
 */5 * * * *	privacyidea	/opt/privacyidea/bin/privacyidea-cron run_scheduled -c
+
+# Audit rotation example: once a week at 00:00 on Sunday
+#0 0 * * 0	privacyidea	pi-manage audit rotate_audit --age 360
