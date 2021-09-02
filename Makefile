@@ -95,6 +95,21 @@ server:
 	scp root@lancelot:/srv/www/nossl/community/${SERIES}/${BRANCH}/pool/main/p/privacyidea-server/privacyidea-server_${PI_VERSION}.orig.tar.gz DEBUILD/ || true
 	(cd ${BUILDDIR_SERVER}; dpkg-buildpackage -sa -us -uc -k${SIGNKEY})
 
+pi-ldapproxy:
+	mkdir -p DEBUILD
+	rm -fr ${BUILDDIR_LDAPPROXY}
+	# Fetch the code from github
+	(cd DEBUILD; git clone git@github.com:privacyidea/privacyidea-ldap-proxy.git privacyidea-ldap-proxy.orig)
+	(cd ${BUILDDIR_LDAPPROXY}; git checkout v${GIT_VERSION})
+	(cd ${BUILDDIR_LDAPPROXY}; rm -fr tests)
+	mkdir -p ${BUILDDIR_LDAPPROXY}/debian
+	cp -r ${DEBIAN_LDAPPROXY}/* ${BUILDDIR_LDAPPROXY}/debian/
+	cp -r deploy ${BUILDDIR_LDAPPROXY}/
+	mv ${BUILDDIR_LDAPPROXY}/LICENSE ${BUILDDIR_LDAPPROXY}/debian/copyright
+	sed -e s/"trusty) trusty; urgency"/"${SERIES}) ${SERIES}; urgency"/g ${DEBIAN_LDAPPROXY}/changelog > ${BUILDDIR_LDAPPROXY}/debian/changelog
+	(cd DEBUILD; tar -zcf privacyidea-ldap-proxy_${PI_VERSION}.orig.tar.gz --exclude=debian/* privacyidea-ldap-proxy.orig)
+	(cd ${BUILDDIR_LDAPPROXY}; DH_VIRTUALENV_INSTALL_ROOT=/opt/ DH_VERBOSE=1 dpkg-buildpackage -us -uc -k${SIGNKEY})
+
 all:
 	@echo "Building for ${SERIES}"
 	make clean privacyidea server radius

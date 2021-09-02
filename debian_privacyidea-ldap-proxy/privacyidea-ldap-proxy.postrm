@@ -1,0 +1,36 @@
+#!/bin/sh
+# see: dh_installdeb(1)
+
+set -e
+
+# source debconf library
+. /usr/share/debconf/confmodule
+
+# Source dbconfig-common functions
+if [ -f /usr/share/dbconfig-common/dpkg/postinst.pgsql  ]; then
+  . /usr/share/dbconfig-common/dpkg/postinst.pgsql
+fi
+
+unset_systemd () {
+if [ -f /lib/systemd/system/privacyidea-ldap-proxy.service ]; then
+	echo "postrm Remove privacyidea-ldap-proxy from systemd"
+	systemctl disable privacyidea-ldap-proxy.service --now
+        rm -f /lib/systemd/system/privacyidea-ldap-proxy.service
+	
+	else
+		echo "postrm privacyidea-ldap-proxy not installed, skipping"
+	fi
+
+	if [ -f /usr/bin/twistd ]; then
+		echo "postrm Remove twistd from /usr/bin/"
+		unlink /usr/bin/twistd
+	else
+		echo "postrm twistd not installed, skipping"
+
+	fi
+}
+
+unset_systemd
+
+#DEBHELPER#
+exit 0
