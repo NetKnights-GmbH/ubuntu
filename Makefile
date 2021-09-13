@@ -2,9 +2,11 @@
 SERIES := $(shell lsb_release -cs)
 BUILDDIR_PI=DEBUILD/privacyidea.orig
 BUILDDIR_SERVER=DEBUILD/privacyidea-server.orig
+BUILDDIR_LDAPPROXY=DEBUILD/privacyidea-ldap-proxy.orig
 BUILDDIR_RADIUS=DEBUILD/privacyidea-radius.orig
 BUILDDIR_APPLIANCE=DEBUILD/pi-appliance.orig
 DEBIAN_PI=debian_privacyidea
+DEBIAN_LDAPPROXY=debian_privacyidea-ldap-proxy
 DEBIAN_SERVER=debian_server
 DEBIAN_RADIUS=debian_radius
 DEBIAN_APPLIANCE=debian_appliance
