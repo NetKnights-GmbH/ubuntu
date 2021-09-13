@@ -1,6 +1,82 @@
 privacyidea-ldap-proxy (0.6.2-1trusty) trusty; urgency=medium
 
-  * dummy_line
+  * python2 to python3 #54
+  * fix py3k issues #54
+  * pi_ldapproxy/proxy: reference correct error attribute #54
+  * pi_ldapproxy/test/mock: pass header value as string #54
+  * pi_ldapproxy/test/test_proxy_simple: pass ldap uris to ldaptor #54
+  * remove enum34 #54
+  * Fix tests. But at what cost? #54
+  * use six.ensure_str for stringification #54
 
- -- NetKnights GmbH <release@netknights.it>  Fri, 27 Aug 2021 12:00:00 +0200
+ -- NetKnights GmbH <release@netknights.it>  Mon, 13 Sep 2021 12:00:00 +0200
 
+privacyidea-ldap-proxy (0.6.1-1trusty) trusty; urgency=medium
+
+  * Fix setup.py
+  * Update cryptography to 2.4.2  Fixes #48
+
+ -- NetKnights GmbH <release@netknights.it>  Thu, 22 Nov 2018 12:00:00 +0200
+
+privacyidea-ldap-proxy (0.6-1trusty) trusty; urgency=medium
+
+  * Close connection to backend in case of health checks (#44)
+  * Completely disable hostname validation if verify = false (#42)
+  * Set User-Agent to "privacyIDEA-LDAP-Proxy".
+  * Improve comments, add notes about configuring LDAPS and
+    deprecate confusing ``use-tls`` option.
+
+ -- NetKnights GmbH <release@netknights.it>  Mon, 19 Nov 2018 12:00:00 +0200
+
+privacyidea-ldap-proxy (0.5-1trusty) trusty; urgency=medium
+
+    * Make handling of anonymous binds configurable (#31)
+    * Allow connection reuse (#30)
+    * Add an option to ignore SEARCH result references (#32)
+    * Fix systemd service file and its location (#36)
+    * Make errors and example config less confusing
+    * Add case-insensitive option to app cache (#38)
+
+ -- NetKnights GmbH <release@netknights.it>  Tue, 12 Dec 2017 12:00:00 +0200
+
+privacyidea-ldap-proxy (0.4.1-1trusty) trusty; urgency=medium
+
+    * Update requirements.txt to fix build on CentOS
+
+ -- NetKnights GmbH <release@netknights.it>  Wed, 02 Aug 2017 12:00:00 +0200
+
+privacyidea-ldap-proxy (0.4-1trusty) trusty; urgency=medium
+
+    * Implement HTTPS certificate options for Proxy<->privacyIDEA connection (#27)
+    * The app cache is now only triggered by searches by passthrough binds (#23)
+    * Disallow multiple binds per connection for now (see #30)
+
+ -- NetKnights GmbH <release@netknights.it>  Mon, 17 Jul 2017 12:00:00 +0200
+
+privacyidea-ldap-proxy (0.3-1trusty) trusty; urgency=medium
+
+    * Map some attributes case-insensitively (#22)
+    * Test connection using the service account
+    * Bind cache now takes the app marker into account (#20)
+    * Implement LDAPS for Proxy<->Backend connection
+    * Authentication requests handled by the bind cache: Only bind the service user
+      if the corresponding config option is set
+
+ -- NetKnights GmbH <release@netknights.it>  Mon, 03 Jul 2017 12:00:00 +0200
+
+privacyidea-ldap-proxy (0.2-1trusty) trusty; urgency=medium
+
+    * Add the app cache which stores the association of user DNs with app markers (#13)
+    * Implement a realm mapper which assigns privacyIDEA realms to authentication requests
+      based on a strategy, the default being the "static" realm mapper strategy (#13)
+    * Add the "app-cache" realm mapper strategy to assign privacyIDEA realms
+      based on app markers retrieved from the app cache (#13)
+    * Improve error reporting in some corner cases (#17)
+
+ -- NetKnights GmbH <release@netknights.it>  Wed, 21 Jun 2017 12:00:00 +0200
+
+privacyidea-ldap-proxy (0.1-1trusty) trusty; urgency=medium
+
+    * Initial release of the privacyIDEA LDAP Proxy
+
+ -- NetKnights GmbH <release@netknights.it>  Mon, 19 Jun 2017 12:00:00 +0200
