@@ -20,7 +20,11 @@ create_user() {
 
 
 create_files() {
-        mkdir -p /var/log/privacyidea
+	mkdir -p /var/log/privacyidea-ldap-proxy
+	touch /var/log/privacyidea-ldap-proxy/privacyidea-ldap-proxy.log
+	chmod 640 /etc/privacyidea-ldap-proxy/config.ini
+	chown -R $USERNAME /var/log/privacyidea-ldap-proxy
+	chown -R $USERNAME /etc/privacyidea-ldap-proxy
 }
 
 set_link() {

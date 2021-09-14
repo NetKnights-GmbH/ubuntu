@@ -10,7 +10,7 @@ ExecStart=/opt/privacyidea-ldap-proxy/bin/twistd \
     ldap-proxy \
     -c /etc/privacyidea-ldap-proxy/config.ini
 
-StandardOutput=file:/var/log/privacyidea/privacyidea-ldap-proxy.log
+StandardOutput=file:/var/log/privacyidea-ldap-proxy/privacyidea-ldap-proxy.log
 
 Restart=always
 
