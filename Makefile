@@ -2,9 +2,11 @@
 SERIES := $(shell lsb_release -cs)
 BUILDDIR_PI=DEBUILD/privacyidea.orig
 BUILDDIR_SERVER=DEBUILD/privacyidea-server.orig
+BUILDDIR_LDAPPROXY=DEBUILD/privacyidea-ldap-proxy.orig
 BUILDDIR_RADIUS=DEBUILD/privacyidea-radius.orig
 BUILDDIR_APPLIANCE=DEBUILD/pi-appliance.orig
 DEBIAN_PI=debian_privacyidea
+DEBIAN_LDAPPROXY=debian_privacyidea-ldap-proxy
 DEBIAN_SERVER=debian_server
 DEBIAN_RADIUS=debian_radius
 DEBIAN_APPLIANCE=debian_appliance
@@ -94,6 +96,21 @@ server:
 	# copy existing tgz from repository and overwrite the one we just created!
 	scp root@lancelot:/srv/www/nossl/community/${SERIES}/${BRANCH}/pool/main/p/privacyidea-server/privacyidea-server_${PI_VERSION}.orig.tar.gz DEBUILD/ || true
 	(cd ${BUILDDIR_SERVER}; dpkg-buildpackage -sa -us -uc -k${SIGNKEY})
+
+pi-ldapproxy:
+	mkdir -p DEBUILD
+	rm -fr ${BUILDDIR_LDAPPROXY}
+	# Fetch the code from github
+	(cd DEBUILD; git clone git@github.com:privacyidea/privacyidea-ldap-proxy.git privacyidea-ldap-proxy.orig)
+	(cd ${BUILDDIR_LDAPPROXY}; git checkout v${GIT_VERSION})
+	(cd ${BUILDDIR_LDAPPROXY}; rm -fr tests)
+	mkdir -p ${BUILDDIR_LDAPPROXY}/debian
+	cp -r ${DEBIAN_LDAPPROXY}/* ${BUILDDIR_LDAPPROXY}/debian/
+	cp -r deploy ${BUILDDIR_LDAPPROXY}/
+	mv ${BUILDDIR_LDAPPROXY}/LICENSE ${BUILDDIR_LDAPPROXY}/debian/copyright
+	sed -e s/"trusty) trusty; urgency"/"${SERIES}) ${SERIES}; urgency"/g ${DEBIAN_LDAPPROXY}/changelog > ${BUILDDIR_LDAPPROXY}/debian/changelog
+	(cd DEBUILD; tar -zcf privacyidea-ldap-proxy_${PI_VERSION}.orig.tar.gz --exclude=debian/* privacyidea-ldap-proxy.orig)
+	(cd ${BUILDDIR_LDAPPROXY}; DH_VIRTUALENV_INSTALL_ROOT=/opt/ DH_VERBOSE=1 dpkg-buildpackage -us -uc -k${SIGNKEY})
 
 all:
 	@echo "Building for ${SERIES}"
