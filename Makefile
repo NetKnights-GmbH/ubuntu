@@ -101,7 +101,7 @@ pi-ldapproxy:
 	mkdir -p DEBUILD
 	rm -fr ${BUILDDIR_LDAPPROXY}
 	# Fetch the code from github
-	(cd DEBUILD; git clone git@github.com:privacyidea/privacyidea-ldap-proxy.git privacyidea-ldap-proxy.orig)
+	(cd DEBUILD; git clone https://github.com:privacyidea/privacyidea-ldap-proxy.git privacyidea-ldap-proxy.orig)
 	(cd ${BUILDDIR_LDAPPROXY}; git checkout v${GIT_VERSION})
 	(cd ${BUILDDIR_LDAPPROXY}; rm -fr tests)
 	mkdir -p ${BUILDDIR_LDAPPROXY}/debian
