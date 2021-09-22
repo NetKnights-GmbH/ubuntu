@@ -145,6 +145,8 @@ add-repo-devel:
 ifeq ($(REPO), $(ENTERPRISEREPO))
 	@echo "**** Adding Appliance to enterprise repo ****"
 	reprepro -b ${MYDIR}/${REPO}/${SERIES}/devel -V include ${SERIES} DEBUILD/pi-appliance_*.changes || true
+	@echo "**** Adding Ldap-Proxy to enterprise repo ****"
+	reprepro -b ${MYDIR}/${REPO}/${SERIES}/devel -V include ${SERIES} DEBUILD/privacyidea-ldap-proxy_*.changes || true
 endif
 
 add-repo-stable:
@@ -164,6 +166,8 @@ endif
 ifeq ($(REPO), $(ENTERPRISEREPO))
 	@echo "**** Adding Appliance to enterprise repo ****"
 	reprepro -b ${MYDIR}/${REPO}/${SERIES}/stable -V include ${SERIES} DEBUILD/pi-appliance_*.changes  || true
+	@echo "**** Adding Ldap-Proxy to enterprise repo ****"
+	reprepro -b ${MYDIR}/${REPO}/${SERIES}/devel -V include ${SERIES} DEBUILD/pi-appliance_*.changes || true
 endif
 
 push-lancelot:
