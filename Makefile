@@ -49,7 +49,7 @@ privacyidea:
 ifeq ($(SERIES),xenial)
 	mv ${BUILDDIR_PI}/debian/rules.xenial ${BUILDDIR_PI}/debian/rules
 endif
-	cp -r deploy ${BUILDDIR_PI}/
+	cp -r deploy ${BUILDDIR_PI}/ && rm -rf ${BUILDDIR_PI}/deploy/privacyidea-ldap-proxy
 	mv ${BUILDDIR_PI}/LICENSE ${BUILDDIR_PI}/debian/copyright
 	sed -e s/"trusty) trusty; urgency"/"${SERIES}) ${SERIES}; urgency"/g ${DEBIAN_PI}/changelog > ${BUILDDIR_PI}/debian/changelog
 	(cd DEBUILD; tar -zcf privacyidea_${PI_VERSION}.orig.tar.gz --exclude=debian/* privacyidea.orig)
@@ -89,7 +89,7 @@ radius:
 server:
 	mkdir -p ${BUILDDIR_SERVER}/debian
 	cp -r ${DEBIAN_SERVER}/* ${BUILDDIR_SERVER}/debian/
-	cp -r deploy ${BUILDDIR_SERVER}/
+	cp -r deploy ${BUILDDIR_SERVER}/ && rm -rf ${BUILDDIR_SERVER}/deploy/privacyidea-ldap-proxy
 	#mv ${BUILDDIR}/LICENSE ${BUILDDIR}/debian/copyright
 	sed -e s/"trusty) trusty; urgency"/"${SERIES}) ${SERIES}; urgency"/g ${DEBIAN_SERVER}/changelog > ${BUILDDIR_SERVER}/debian/changelog
 	(cd DEBUILD; tar -zcf privacyidea-server_${PI_VERSION}.orig.tar.gz --exclude=debian/* privacyidea-server.orig)
@@ -105,7 +105,7 @@ pi-ldapproxy:
 	(cd ${BUILDDIR_LDAPPROXY}; git checkout v${GIT_VERSION})
 	mkdir -p ${BUILDDIR_LDAPPROXY}/debian
 	cp -r ${DEBIAN_LDAPPROXY}/* ${BUILDDIR_LDAPPROXY}/debian/
-	cp -r deploy ${BUILDDIR_LDAPPROXY}/
+	cp -r deploy/privacyidea-ldap-proxy ${BUILDDIR_LDAPPROXY}/deploy/
 	mv ${BUILDDIR_LDAPPROXY}/LICENSE ${BUILDDIR_LDAPPROXY}/debian/copyright
 	sed -e s/"trusty) trusty; urgency"/"${SERIES}) ${SERIES}; urgency"/g ${DEBIAN_LDAPPROXY}/changelog > ${BUILDDIR_LDAPPROXY}/debian/changelog
 	(cd DEBUILD; tar -zcf privacyidea-ldap-proxy_${PI_VERSION}.orig.tar.gz --exclude=debian/* privacyidea-ldap-proxy.orig)
