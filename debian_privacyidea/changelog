@@ -1,3 +1,15 @@
+ privacyidea (3.7~dev2-1trusty) trusty; urgency=medium
+
+  Enhancements:
+  * Support SMTPS (#2568)
+  * Add policy extended conditions of webserver environment (#2510)
+
+  Fixes:
+  * Do not use not-readily enrolled tokens for auth  (#2852)
+  * Allow tokens in client_wait to be rolled over (#2763)
+
+ -- NetKnights GmbH <release@netknights.it>  Fri, 08 Oct 2021 10:00:00 +0200
+
 privacyidea (3.7~dev1-1trusty) trusty; urgency=medium
 
   Features:
