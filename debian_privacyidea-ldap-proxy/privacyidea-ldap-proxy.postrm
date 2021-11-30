@@ -11,26 +11,33 @@ if [ -f /usr/share/dbconfig-common/dpkg/postinst.pgsql  ]; then
   . /usr/share/dbconfig-common/dpkg/postinst.pgsql
 fi
 
-unset_systemd () {
-if [ -f /lib/systemd/system/privacyidea-ldap-proxy.service ]; then
-	echo "postrm Remove privacyidea-ldap-proxy from systemd"
-	systemctl disable privacyidea-ldap-proxy.service --now
-        rm -f /lib/systemd/system/privacyidea-ldap-proxy.service
-	
-	else
-		echo "postrm privacyidea-ldap-proxy not installed, skipping"
-	fi
+case "$1" in
+ (upgrade)
+    # systemd: restart service 
+    [ -d /run/systemd/system ] && systemctl --system daemon-reload >/dev/null || true
+    [ -x /bin/systemctl ] && systemctl restart privacyidea-ldap-proxy.service
+    ;;
 
-	if [ -f /usr/bin/twistd ]; then
-		echo "postrm Remove twistd from /usr/bin/"
-		unlink /usr/bin/twistd
-	else
-		echo "postrm twistd not installed, skipping"
+  (purge)
+    [ -x /bin/systemctl ] && systemctl stop privacyidea-ldap-proxy.service >/dev/null 2>&1 || true
+    # Use userdel/groupdel from passwd instead of deluser/delgroup from
+    # the adduser package. This is because adduser depends on passwd,
+    # but is of lesser priority.
+    userdel privacyidea-ldap-proxy >/dev/null 2>&1 || true
+    groupdel privacyidea-ldap-proxy >/dev/null 2>&1 || true
+    rm -rf /etc/privacyidea-ldap-proxy/config.ini
+    ;;
 
-	fi
-}
+  (remove|failed-upgrade|abort-install|abort-upgrade|disappear)
+    [ -x /bin/systemctl ] && systemctl stop privacyidea-ldap-proxy.service >/dev/null 2>&1 || true
+    ;;
 
-unset_systemd
+  (*)
+    echo "postrm called with unknown argument \`$1'" >&2
+    exit 1
+    ;;
+esac
 
-#DEBHELPER#
+[ -d /run/systemd/system ] && systemctl --system daemon-reload >/dev/null || true
+
 exit 0
