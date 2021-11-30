@@ -12,7 +12,7 @@ if [ -f /usr/share/dbconfig-common/dpkg/postinst.pgsql  ]; then
 fi
 
 case "$1" in
- (upgrade)
+  (upgrade)
     # systemd: restart service 
     [ -d /run/systemd/system ] && systemctl --system daemon-reload >/dev/null || true
     [ -x /bin/systemctl ] && systemctl restart privacyidea-ldap-proxy.service
