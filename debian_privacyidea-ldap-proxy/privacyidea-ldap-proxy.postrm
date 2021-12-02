@@ -20,9 +20,7 @@ case "$1" in
 
   (purge)
     [ -x /bin/systemctl ] && systemctl stop privacyidea-ldap-proxy.service >/dev/null 2>&1 || true
-    # Use userdel/groupdel from passwd instead of deluser/delgroup from
-    # the adduser package. This is because adduser depends on passwd,
-    # but is of lesser priority.
+    # delete user and group from system
     userdel privacyidea-ldap-proxy >/dev/null 2>&1 || true
     groupdel privacyidea-ldap-proxy >/dev/null 2>&1 || true
     rm -rf /etc/privacyidea-ldap-proxy/config.ini
