@@ -35,7 +35,7 @@ privacyidea (3.7~dev3-1trusty) trusty; urgency=medium
   * Token: Fix email token without an assigned user (#2990)
   * Token: Handle modhex error for invalid passwords in Yubikey token (#2896)
 
- -- NetKnights GmbH <release@netknights.it>  Mo, 21 Feb 2022 10:00:00 +0200
+ -- NetKnights GmbH <release@netknights.it>  Mon, 21 Feb 2022 10:00:00 +0200
 
 privacyidea (3.6.3-1trusty) trusty; urgency=medium
 
