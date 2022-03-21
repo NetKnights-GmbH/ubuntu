@@ -1,3 +1,23 @@
+privacyidea (3.7~dev4-1trusty) trusty; urgency=medium
+
+  Features:
+  * Security: Add security module to decrypt encryption keys using HSM (#3003)
+
+ Enhancements:
+  * UI: Policy to exclude tokeninfo in token details (#2819)
+  * UI: Highlight policy search term (#2577)
+  * Token: Policy for Password token can create human readable passwords (#2864)
+  * Security and Speed: Allow to choosing hashing algorithms in pi.cfg (#2981)
+  * Add documentation about importance of time in privacyIDEA (#3026)
+  * Allow to login to WebUI using Push-Tokens (#2893)
+
+ Fixes:
+  * Failures in submission to Firebase will not block Push-Poll (#2904)
+  * Fix problems with CA certificate and StartTLS (#2892)
+  * Dependency update (Pillow)
+
+ -- NetKnights GmbH <release@netknights.it>  Mon, 21 Mar 2022 10:00:00 +0200
+
 privacyidea (3.7~dev3-1trusty) trusty; urgency=medium
 
   Features:
