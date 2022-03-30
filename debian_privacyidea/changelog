@@ -1,4 +1,4 @@
-privacyidea (3.7~dev5-1trusty) trusty; urgency=medium
+privacyidea (3.7~dev6-1trusty) trusty; urgency=medium
 
   Release Candidate / combined changelog
 
@@ -72,7 +72,7 @@ privacyidea (3.7~dev5-1trusty) trusty; urgency=medium
   * Fix upper case realm names in policy check (#2869)
   * Fix deleting expired auth_cache entries (#2481)
 
- -- NetKnights GmbH <release@netknights.it>  Mon, 28 Mar 2022 10:00:00 +0200
+ -- NetKnights GmbH <release@netknights.it>  Wed, 30 Mar 2022 10:00:00 +0200
 
 privacyidea (3.6.3-1trusty) trusty; urgency=medium
 
@@ -81,18 +81,6 @@ privacyidea (3.6.3-1trusty) trusty; urgency=medium
   * Fix problem with old OTP values of TOTP tokens in autoresync
 
  -- NetKnights GmbH <release@netknights.it>  Thu, 18 Nov 2021 12:00:00 +0200
-
-privacyidea (3.7~dev2-1trusty) trusty; urgency=medium
-
-  Enhancements:
-  * Support SMTPS (#2568)
-  * Add policy extended conditions of webserver environment (#2510)
-
-  Fixes:
-  * Do not use not-readily enrolled tokens for auth  (#2852)
-  * Allow tokens in client_wait to be rolled over (#2763)
-
- -- NetKnights GmbH <release@netknights.it>  Fri, 08 Oct 2021 10:00:00 +0200
 
 privacyidea (3.7~dev1-1trusty) trusty; urgency=medium
 
