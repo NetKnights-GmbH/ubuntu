@@ -1,4 +1,4 @@
-privacyidea (3.7.1~dev1-1trusty) trusty; urgency=medium
+privacyidea (3.7.1~dev2-1trusty) trusty; urgency=medium
 
   Fixes:
   * Fix WebUI login with HOTP/TOTP challenge-response token (#3038)
@@ -12,7 +12,7 @@ privacyidea (3.7.1~dev1-1trusty) trusty; urgency=medium
   Enhancements:
   * Add App-PIN policy for Push token (#3116)
 
- -- NetKnights GmbH <release@netknights.it>  Thu, 05 May 2022 10:00:00 +0200
+ -- NetKnights GmbH <release@netknights.it>  Thu, 06 May 2022 10:00:00 +0200
 
 privacyidea (3.7-1trusty) trusty; urgency=medium
 
