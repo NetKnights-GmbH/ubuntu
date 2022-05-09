@@ -122,18 +122,24 @@ init-repo:
 	mkdir -p $(MYDIR)/${REPO}/bionic/devel/conf
 	mkdir -p $(MYDIR)/${REPO}/focal/stable/conf
 	mkdir -p $(MYDIR)/${REPO}/focal/devel/conf
+	mkdir -p $(MYDIR)/${REPO}/jammy/stable/conf
+	mkdir -p $(MYDIR)/${REPO}/jammy/devel/conf
 	cp distributions/xenial-devel ${REPO}/xenial/devel/conf/distributions
 	cp distributions/xenial-stable ${REPO}/xenial/stable/conf/distributions
 	cp distributions/bionic-devel ${REPO}/bionic/devel/conf/distributions
 	cp distributions/bionic-stable ${REPO}/bionic/stable/conf/distributions
 	cp distributions/focal-devel ${REPO}/focal/devel/conf/distributions
 	cp distributions/focal-stable ${REPO}/focal/stable/conf/distributions
+	cp distributions/jammy-devel ${REPO}/jammy/devel/conf/distributions
+	cp distributions/jammy-stable ${REPO}/jammy/stable/conf/distributions
 	reprepro -b $(MYDIR)/${REPO}/xenial/stable createsymlinks
 	reprepro -b $(MYDIR)/${REPO}/xenial/devel createsymlinks
 	reprepro -b $(MYDIR)/${REPO}/bionic/stable createsymlinks
 	reprepro -b $(MYDIR)/${REPO}/bionic/devel createsymlinks
 	reprepro -b $(MYDIR)/${REPO}/focal/stable createsymlinks
 	reprepro -b $(MYDIR)/${REPO}/focal/devel createsymlinks
+	reprepro -b $(MYDIR)/${REPO}/jammy/stable createsymlinks
+	reprepro -b $(MYDIR)/${REPO}/jammy/devel createsymlinks
 
 add-repo-devel:
 	cp ${MYDIR}/${REPO}/${SERIES}/devel/pool/main/p/privacyidea-server/privacyidea-server_${PI_VERSION}.orig.tar.gz DEBUILD/ || true
