@@ -134,6 +134,10 @@ update_db() {
 }
 
 create_gpg() {
+    if [ "jammy" = $(lsb_release -cs) ] & [ -n $(pgrep rngd) ]; then
+        echo "killing rngd process..."
+        killall -9 rngd || true
+    fi
 	mkdir -p /etc/privacyidea/gpg
 	rngd -r /dev/urandom
 	/opt/privacyidea/bin/pi-manage create_pgp_keys || true
