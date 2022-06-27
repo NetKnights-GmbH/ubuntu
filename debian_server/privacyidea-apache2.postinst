@@ -134,7 +134,7 @@ update_db() {
 }
 
 create_gpg() {
-    if [ "jammy" = $(lsb_release -cs) ] & [ -n $(pgrep rngd) ]; then
+    if [ "jammy" = $(lsb_release -cs) ] && [ -n $(pgrep rngd) ]; then
         echo "killing rngd process..."
         killall -9 rngd || true
     fi
