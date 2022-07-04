@@ -1,4 +1,4 @@
-privacyidea (3.7.2~dev1-1trusty) trusty; urgency=medium
+privacyidea (3.7.2-1trusty) trusty; urgency=medium
 
   Fixes:
   * Fix password recovery link (#3168)
@@ -8,7 +8,7 @@ privacyidea (3.7.2~dev1-1trusty) trusty; urgency=medium
   * Downgrade ldap3 dependency to fix finding of 5c-users
     in objectGUID in Active Directory
 
- -- NetKnights GmbH <release@netknights.it>  Mon, 27 Jun 2022 10:00:00 +0200
+ -- NetKnights GmbH <release@netknights.it>  Mon, 04 Jul 2022 10:00:00 +0200
 
 privacyidea (3.7.1-1trusty) trusty; urgency=medium
 
