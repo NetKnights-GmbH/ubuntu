@@ -7,7 +7,7 @@
 #}
 
 server {
-        add_header Content-Security-Policy "default-src 'self';";
+        add_header Content-Security-Policy "frame-ancestors 'self';";
         listen 443 ssl;
         server_name     $hostname;
         ssl_certificate /etc/ssl/certs/privacyidea-bundle.crt;
