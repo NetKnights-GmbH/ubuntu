@@ -114,6 +114,9 @@ create_database() {
 }
 
 enable_apache() {
+    if [ ! -h /etc/apache2/mods-enabled/rewrite.load ]; then
+        a2enmod rewrite
+    fi
     if [ ! -h /etc/apache2/sites-enabled/privacyidea.conf ]; then
         rm -f /etc/apache2/sites-enabled/*
         a2enmod wsgi headers ssl rewrite
