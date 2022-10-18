@@ -35,7 +35,8 @@ create_files() {
 	mkdir -p /etc/privacyidea/scripts
         touch /var/log/privacyidea/privacyidea.log
         /opt/privacyidea/bin/pi-manage create_enckey || true > /dev/null
-        /opt/privacyidea/bin/pi-manage create_tables || true > /dev/null
+        # /opt/privacyidea/bin/pi-manage create_tables || true > /dev/null
+	/opt/privacyidea/bin/pi-manage createdb || true > /dev/null
         /opt/privacyidea/bin/pi-manage create_audit_keys || true > /dev/null
         chown -R $USERNAME /var/log/privacyidea
         chown -R $USERNAME /var/lib/privacyidea
