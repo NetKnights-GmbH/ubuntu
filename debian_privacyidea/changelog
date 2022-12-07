@@ -1,4 +1,4 @@
-privacyidea (3.8~dev2-1trusty) trusty; urgency=medium
+privacyidea (3.8~dev3-1trusty) trusty; urgency=medium
 
   Features:
   * Add enrollment of HOTP, TOTP, SMS, Email or PUSH token during
@@ -7,6 +7,7 @@ privacyidea (3.8~dev2-1trusty) trusty; urgency=medium
     management (#3299)
 
   Enhancements:
+  * Add thread ID to audit log (#3381)
   * Add preferred client mode to define the authentication behaviour of
     plugins (#3373)
   * Avoid spamming with SMS or Email by allowing to increase failcounter
@@ -22,7 +23,7 @@ privacyidea (3.8~dev2-1trusty) trusty; urgency=medium
   * Rename createdb and dropdb to createtables and droptables (#2996)
   * Make subscription checking more relaxing (#3296)
 
- -- NetKnights GmbH <release@netknights.it>  Wed, 07 Nov 2022 10:00:00 +0200
+ -- NetKnights GmbH <release@netknights.it>  Wed, 07 Dec 2022 10:00:00 +0200
 
 privacyidea (3.7.4-2trusty) trusty; urgency=medium
 
