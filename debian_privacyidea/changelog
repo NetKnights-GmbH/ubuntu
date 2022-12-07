@@ -1,3 +1,29 @@
+privacyidea (3.8~dev2-1trusty) trusty; urgency=medium
+
+  Features:
+  * Add enrollment of HOTP, TOTP, SMS, Email or PUSH token during
+    authentication via Multi-Challenge (#2993)
+  * Add token groups in preparation for SSH key and Offline-Token
+    management (#3299)
+
+  Enhancements:
+  * Add preferred client mode to define the authentication behaviour of
+    plugins (#3373)
+  * Avoid spamming with SMS or Email by allowing to increase failcounter
+    during challenge-response (#933)
+  * Configure Email address in the subject of a certificate request (#3327)
+
+  Fixes:
+  * Fix fetching SSH keys under certain circumstances (#3375)
+  * Add missing sequences for certain database tables (#3356)
+  * Remove user fields from token API (#3343)
+  * Add SMPP encoding check (#3321)
+  * Fix encrpyting empty strings in AES module (#2899)
+  * Rename createdb and dropdb to createtables and droptables (#2996)
+  * Make subscription checking more relaxing (#3296)
+
+ -- NetKnights GmbH <release@netknights.it>  Wed, 07 Nov 2022 10:00:00 +0200
+
 privacyidea (3.7.4-2trusty) trusty; urgency=medium
 
   Fixes:
