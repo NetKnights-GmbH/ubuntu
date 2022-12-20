@@ -1,4 +1,4 @@
-privacyidea (3.8~dev4-1trusty) trusty; urgency=medium
+privacyidea (3.8-1trusty) trusty; urgency=medium
 
   Features:
   * Drop support for Python 3.5. Support for 2.7 will be dropped
@@ -63,7 +63,7 @@ privacyidea (3.8~dev4-1trusty) trusty; urgency=medium
   * Disable realm button in case of reasolverread (UI) (#3149)
   * Add missing translation for PSKC import (#3129)
 
- -- NetKnights GmbH <release@netknights.it>  Fri, 16 Dec 2022 15:45:00 +0200
+ -- NetKnights GmbH <release@netknights.it>  Tue, 20 Dec 2022 08:30:00 +0200
 
 privacyidea (3.8~dev3-1trusty) trusty; urgency=medium
 
