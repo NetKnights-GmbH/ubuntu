@@ -1,3 +1,12 @@
+privacyidea (3.8.1~dev1-1trusty) trusty; urgency=medium
+
+  Fixes:
+  * Update diag tool (#3146)
+  * Fix tokengroup error in WebUI (#3441)
+  * Fix wrong QR code in enroll-via-validate (#3427)
+
+ -- NetKnights GmbH <release@netknights.it>  Fri, 13 Jan 2023 12:30:00 +0200
+
 privacyidea (3.8-1trusty) trusty; urgency=medium
 
   Features:
