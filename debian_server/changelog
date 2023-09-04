@@ -1,3 +1,9 @@
+privacyidea-server (3.9~dev3-1trusty) trusty; urgency=medium
+
+  * update version number
+
+ -- NetKnights GmbH <release@netknights.it>  Mo, 04 Sep 2023 12:30:00 +0200
+
 privacyidea-server (3.9~dev2-1trusty) trusty; urgency=medium
 
   * update version number

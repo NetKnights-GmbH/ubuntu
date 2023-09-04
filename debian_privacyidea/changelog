@@ -1,3 +1,11 @@
+privacyidea (3.9~dev3-1trusty) trusty; urgency=medium
+
+  Enhancements:
+  * Docs: Update documentation (#3728
+  * Correct ID and help-text for Daypassword (#3742, #3744)
+
+ -- NetKnights GmbH <release@netknights.it>  Mo, 04 Sep 2023 12:30:00 +0200
+
 privacyidea (3.9~dev2-1trusty) trusty; urgency=medium
 
   Enhancements:
