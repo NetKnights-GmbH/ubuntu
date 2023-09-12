@@ -1,23 +1,4 @@
-privacyidea (3.9~dev3-1trusty) trusty; urgency=medium
-
-  Enhancements:
-  * Docs: Update documentation (#3728
-  * Correct ID and help-text for Daypassword (#3742, #3744)
-
- -- NetKnights GmbH <release@netknights.it>  Mo, 04 Sep 2023 12:30:00 +0200
-
-privacyidea (3.9~dev2-1trusty) trusty; urgency=medium
-
-  Enhancements:
-  * Update translations
-  * Update documentation (#3712, #3728)
-
-  Fixes:
-  * Fix calculation of TOTP values (#3734)
-
- -- NetKnights GmbH <release@netknights.it>  Tue, 29 Aug 2023 12:30:00 +0200
-
-privacyidea (3.9~dev1-1trusty) trusty; urgency=medium
+privacyidea (3.9-1trusty) trusty; urgency=medium
 
   Features:
   * Tokentype: Application Specific password (#3260, #3585)
@@ -48,12 +29,15 @@ privacyidea (3.9~dev1-1trusty) trusty; urgency=medium
   * UI: Multiselect policies in WebUI (#3493)
   * UI: Make the whole header of an accordion clickable (#3425)
   * UI: Improved grouping in the system menu (#3419)
+  * UI: Moved the CA menu to config->system (#3419)
   * UI: Add italian translation (#3508)
   * UI: Add user information in selfservice/user context (#3688)
   * Docs: Improve documentation for /validate/check-enrollment (#3507)
   * Docs: Improve policy mangle documentation (#3565)
   * Docs: Add a detailed plugin guide how to write fully functional plugins (#3650)
   * Docs: Fix description of preferred_client_mode (#3661)
+  * Docs: Update documentation (#3728, #3712, #3728)
+  * Update translations
   * Infrastructure: Add Bandit and GraphQL runs for pull requests
 
   Fixes:
@@ -84,8 +68,10 @@ privacyidea (3.9~dev1-1trusty) trusty; urgency=medium
   * Fixing response data of /auth endpoint to make the handling
     more consistent (#3436)
   * Fix parameter error in Webhook event handler (#3676)
+  * Fix calculation of TOTP values (#3734)
+  * Correct ID and help-text for Daypassword (#3742, #3744)
 
- -- NetKnights GmbH <release@netknights.it>  Fri, 28 Jul 2023 12:30:00 +0200
+ -- NetKnights GmbH <release@netknights.it>  Tue, 12 Sep 2023 12:30:00 +0200
 
 privacyidea (3.8.1-1trusty) trusty; urgency=medium
 
