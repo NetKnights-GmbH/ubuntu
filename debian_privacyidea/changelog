@@ -1,12 +1,13 @@
-privacyidea (3.9.1~dev1-1trusty) trusty; urgency=medium
+privacyidea (3.9.1-1trusty) trusty; urgency=medium
 
   Fixes:
   * Set correct start sequence for empty tables
   * Fix pi-manage backup
   * Add privacyIDEA CP to list of clients, that do not
     need to be unquoted. (#3770)
+  * Fix problem with token description and verify enrollment (#3798)
 
- -- NetKnights GmbH <release@netknights.it>  Wed, 18 Oct 2023 12:30:00 +0200
+ -- NetKnights GmbH <release@netknights.it>  Mon, 06 Nov 2023 12:30:00 +0200
 
 privacyidea (3.9-1trusty) trusty; urgency=medium
 
