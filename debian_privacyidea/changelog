@@ -1,3 +1,15 @@
+privacyidea (3.10~dev1-1trusty) trusty; urgency=medium
+
+  Enhancements:
+  * Enable user-agent version in subscription checks (#3800)
+  * token-janitor now uses the click framework (#3769)
+  * Enhance offline token to allow refill for WebAuthn tokens (#3764)
+
+  Fixes:
+  * Use uppercase hash name for google-authenticator URLs (#3812)
+
+ -- NetKnights GmbH <release@netknights.it>  Thu, 30 Nov 2023 12:30:00 +0200
+
 privacyidea (3.9.1-1trusty) trusty; urgency=medium
 
   Fixes:
