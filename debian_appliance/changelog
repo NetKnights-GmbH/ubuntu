@@ -1,3 +1,10 @@
+pi-appliance (3.3.1-1) xenial; urgency=low
+
+  * Update requirements
+  * Fix pi-appliance won't start with newer version of privacyidea > 3.9
+
+ -- NetKnights GmbH <release@netknights.it>  Mon, 04 Dec 2023 12:00:00 +0200
+
 pi-appliance (3.3-1) xenial; urgency=low
 
   * Update requirements / add ubuntu22 (jammy) support
