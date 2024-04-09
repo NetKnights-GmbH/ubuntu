@@ -1,9 +1,9 @@
-privacyidea (3.9.3~dev1-1trusty) trusty; urgency=medium
+privacyidea (3.9.3-1trusty) trusty; urgency=medium
 
   Fixes:
   * Fix creation of database tables with galera cluster (#3863)
 
- -- NetKnights GmbH <release@netknights.it>  Thu, 04 Apr 2024 12:30:00 +0200
+ -- NetKnights GmbH <release@netknights.it>  Tue, 09 Apr 2024 12:30:00 +0200
 
 privacyidea (3.9.2-1trusty) trusty; urgency=medium
 
