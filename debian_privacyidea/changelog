@@ -1,16 +1,14 @@
-privacyidea (3.10~dev2-1trusty) trusty; urgency=medium
+privacyidea (3.10~dev3-1trusty) trusty; urgency=medium
 
   Enhancements:
-  * Migration of several tools to the click framework
-  * Offline token: Allow to post-pend the PIN
-  * Dump token data to JSON
-  * Allow case-insensitive usernames in policies
-  * Allow extended notes on policies
-  * WebAuthn: Allow offline usage
-  * Add user-agent to audit log
-  * Check secret length for Yubikey token during enrollment
+  * Cleanup of expired challenges externally (#3920)
 
- -- NetKnights GmbH <release@netknights.it>  Wed, 08 May 2024 12:30:00 +0200
+  Fixes:
+  * Remove duplicate messages from response (#3989)
+  * Lazy translation evaluation for static strings (#3721)
+  * Truncate token description (#3747)
+
+ -- NetKnights GmbH <release@netknights.it>  Fri, 28 Jun 2024 12:30:00 +0200
 
 privacyidea (3.9.3-1trusty) trusty; urgency=medium
 
