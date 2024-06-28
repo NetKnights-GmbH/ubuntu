@@ -1,0 +1,7 @@
+Origin: NetKnights
+Label: privacyIDEA
+Codename: noble
+Suite: devel
+Architectures: i386 amd64 source
+Components: main
+SignWith: release@netknights.it
