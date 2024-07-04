@@ -84,14 +84,37 @@ create_database() {
         printf "[mariadb]\ninnodb_large_prefix=on\ninnodb_file_format=Barracuda\n" > $MYSQLFIX
         systemctl restart mysql
     fi
-    # create the MYSQL database
-    if [ !$(grep "^SQLALCHEMY_DATABASE_URI" /etc/privacyidea/pi.cfg || true) ]; then
-        USER="debian-sys-maint"
-        PASSWORD=$(grep "^password" /etc/mysql/debian.cnf | sort -u | cut -d " " -f3)
+
+    # Check if SQLALCHEMY_DATABASE_URI is already set
+    if ! grep -q "^SQLALCHEMY_DATABASE_URI" /etc/privacyidea/pi.cfg; then
+        # Default to root user
+        USER="root"
+        PASSWORD=""
+
+	# Check if /etc/mysql/debian.cnf exists
+        if [ -f /etc/mysql/debian.cnf ]; then
+            # Check if debian-sys-maint user is configured with a password
+            if grep -q "user\s*=\s*debian-sys-maint" /etc/mysql/debian.cnf; then
+                PASSWORD=$(grep -m 1 "^password" /etc/mysql/debian.cnf | cut -d " " -f3 || true)
+                if [ -n "$PASSWORD" ]; then
+                    USER="debian-sys-maint"
+                fi
+            fi
+        fi
+
         NPW="$(tr -dc A-Za-z0-9_ </dev/urandom | head -c12)"
-        mysql -u $USER --password=$PASSWORD -e "create database pi;" || true
-        mysql -u $USER --password=$PASSWORD -e "create user 'pi'@'localhost' IDENTIFIED BY '$NPW';"
-        mysql -u $USER --password=$PASSWORD -e "grant all privileges on pi.* to 'pi'@'localhost';"
+
+        # Create database and user
+        if [ "$USER" = "root" ]; then
+            mysql -u $USER -e "create database pi;" || true
+            mysql -u $USER -e "create user 'pi'@'localhost' IDENTIFIED BY '$NPW';"
+            mysql -u $USER -e "grant all privileges on pi.* to 'pi'@'localhost';"
+        else
+            mysql -u $USER --password=$PASSWORD -e "create database pi;" || true
+            mysql -u $USER --password=$PASSWORD -e "create user 'pi'@'localhost' IDENTIFIED BY '$NPW';"
+            mysql -u $USER --password=$PASSWORD -e "grant all privileges on pi.* to 'pi'@'localhost';"
+        fi
+
         echo "SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://pi:$NPW@localhost/pi?charset=utf8'" >> /etc/privacyidea/pi.cfg
     fi
 }
