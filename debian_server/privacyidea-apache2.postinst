@@ -117,6 +117,7 @@ create_database() {
         fi
 
         echo "SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://pi:$NPW@localhost/pi?charset=utf8'" >> /etc/privacyidea/pi.cfg
+	echo "DB created"
     fi
 }
 
