@@ -20,5 +20,6 @@
     <uid>privacyidea</uid>
     <gid>www-data</gid>
     <vacuum/>
+    <lazy-apps/>
 </uwsgi>
 
