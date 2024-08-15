@@ -13,7 +13,7 @@ Build all devel packages and publish them to the repository:
 
     VERSION=3.0~dev10 make privacyidea server add-repo-devel push-lancelot
 
-Build productive pakcages an publish them to the enteprrise repository:
+Build productive pakcages an publish them to the enterprise repository:
 
     VERSION=3.2.1 REPO=enterpriserepo make privacyidea server add-repo-stable push-lancelot
 
