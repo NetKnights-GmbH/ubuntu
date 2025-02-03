@@ -2,7 +2,7 @@ privacyidea (3.11~dev2-1trusty) trusty; urgency=medium
 
   Features:
   * Passkeys (#4024)
-  
+
   Fixes:
   * dummy line
 
