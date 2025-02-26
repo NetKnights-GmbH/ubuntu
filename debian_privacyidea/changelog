@@ -1,4 +1,4 @@
-privacyidea (3.11~dev3-1trusty) trusty; urgency=medium
+privacyidea (3.11-1trusty) trusty; urgency=medium
 
   Features:
   * Passkeys (#4024)
@@ -11,6 +11,7 @@ privacyidea (3.11~dev3-1trusty) trusty; urgency=medium
     * Synchronize Smartphone Container with Server
     * Rollover a Smartphone Container
     * Container templates
+    * Container Wizard
 
   Enhancements:
   * Health check API endpoint (#1115)
@@ -32,8 +33,9 @@ privacyidea (3.11~dev3-1trusty) trusty; urgency=medium
   * `check_base_action` pre-policy only evaluates the first realm of a token (#4011)
   * Fix that deleting a policy results in a 'failed' audit log entry (#1720)
   * Max token policy ignored with enroll via multi challenge (#4146)
+  * Better error checking in ScriptEventHandler (#4250)
 
- -- NetKnights GmbH <release@netknights.it>  Wed, 19 Feb 2025 12:30:00 +0200
+ -- NetKnights GmbH <release@netknights.it>  Wed, 26 Feb 2025 12:30:00 +0200
 
 privacyidea (3.10.2-1trusty) trusty; urgency=medium
 
