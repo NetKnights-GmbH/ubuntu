@@ -1,3 +1,23 @@
+privacyidea (3.11.1~dev1-1trusty) trusty; urgency=medium
+
+  Fixes:
+  * UI: Reload of user list, doubled delete button, container pagination (#4277)
+  * Passkeys: Add policy to enable triggering Passkeys with PIN (#4296)
+  * Passkeys: Disable PIN input during enrollment (#4335)
+  * Passkeys: Disable trigger a challenge since Passkeys use a different method (#4334)
+  * Allow completely random token serials (#4194)
+  * Fix sending unused parameters for event handler configuration (#4286)
+  * Convert bool parameter to fix healthcheck API (#4291)
+  * Always include microseconds in `last_auth` format (#4289)
+  * Fix wrong hashlib in QR-code when enrolling through Keycloak (#4276)
+  * Remove `ttype` parameter from Yubikey signature calculation (#4306)
+  * Fix token query with multiple realms (#4317)
+  * Fix `authentication` return value when using `/validate/samlcheck`,
+    `/validate/triggerchallenge` and `/auth` (#4313, #4334)
+  * Improve log messages when extended conditions fail (#4016)
+
+ -- NetKnights GmbH <release@netknights.it>  Fri, 04 Apr 2025 12:30:00 +0200
+
 privacyidea (3.11-1trusty) trusty; urgency=medium
 
   Features:
