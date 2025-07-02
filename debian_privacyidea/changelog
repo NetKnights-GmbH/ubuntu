@@ -1,4 +1,4 @@
-privacyidea (3.11.3-1trusty) trusty; urgency=medium
+privacyidea (3.11.4-1trusty) trusty; urgency=medium
 
   Fixes:
   * Fix wrong token assignment view tokens when using the usercache (#4454)
