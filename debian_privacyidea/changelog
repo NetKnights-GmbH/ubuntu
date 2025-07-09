@@ -1,3 +1,25 @@
+privacyidea (3.12~dev1-1trusty) trusty; urgency=medium
+
+  Features:
+  * Entra ID and Keycloak resolver (#4217)
+
+  Enhancements:
+  * Remember last used token type per user and application for multi-challenge (#4179)
+  * Add option 'handle_missing_data' to the extended policy conditions (#4339)
+  * Move project description and building metadata into pyproject.toml (#3525)
+  * Policy to disable specific token types for authentication (#4371)
+  * Dedicated functions to rename and clone policies (#4293)
+  * Clean up user cache and expired challenges via API/WebUI (#4280)
+  * Allow to enroll smartphone containers via multi-challenge (#4361)
+  * Add comparators for extended policy conditions to compare dates and check for substrings (#4470)
+
+  Fixes:
+  * Reduce PyOpenSSL dependencies for certificate token (#4212)
+  * Consistent handling of whitespaces in usernames for policy checks (#4385)
+
+ -- NetKnights GmbH <release@netknights.it>  Wed, 09 Jul 2025 12:30:00 +0200
+
+
 privacyidea (3.11.4-1trusty) trusty; urgency=medium
 
   Fixes:
