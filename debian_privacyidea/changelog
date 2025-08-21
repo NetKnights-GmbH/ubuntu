@@ -16,7 +16,7 @@ privacyidea (3.12~dev2-1trusty) trusty; urgency=medium
 
  -- NetKnights GmbH <release@netknights.it>  Thu, 21 Aug 2025 12:30:00 +0200
 
-privacyidea (3.12~dev2-1trusty) trusty; urgency=medium
+privacyidea (3.12~dev0-1trusty) trusty; urgency=medium
 
   Features:
   * Entra ID and Keycloak resolver (#4217)
