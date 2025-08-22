@@ -63,7 +63,7 @@ create_database() {
 
 update_db() {
     # Upgrade the database
-    /opt/privacyidea/bin/privacyidea-schema-upgrade /opt/privacyidea/lib/privacyidea/migrations
+    /opt/privacyidea/bin/privacyidea-schema-upgrade
 }
 
 case "$1" in
