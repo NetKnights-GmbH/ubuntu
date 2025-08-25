@@ -9,7 +9,6 @@ set -e
 USERNAME=privacyidea
 CERTDAYS=1095
 CERTKEYSIZE=4096
-MIGRATIONSDIR=/opt/privacyidea/lib/privacyidea/migrations/
 
 if test -f /etc/default/privacyidea; then
     . /etc/default/privacyidea
@@ -97,7 +96,7 @@ enable_nginx_uwsgi() {
 
 update_db() {
     # Upgrade the database
-    /opt/privacyidea/bin/privacyidea-schema-upgrade $MIGRATIONSDIR
+    /opt/privacyidea/bin/privacyidea-schema-upgrade
 }
 
 set_path() {
