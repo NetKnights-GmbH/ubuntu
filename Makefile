@@ -43,6 +43,13 @@ privacyidea:
 	#(cd ${BUILDDIR_PI}; git checkout v${GIT_VERSION})
 	#(cd ${BUILDDIR_PI}; git submodule init; git submodule update --recursive --remote)
 	(cd ${BUILDDIR_PI}; rm -fr tests)
+	# --- Build new WebUI (requires npm/node) ---
+	@command -v npm >/dev/null 2>&1 || { echo >&2 "ERROR: npm not found. Please install nodejs & npm for the build host."; exit 1; }
+	(cd ${BUILDDIR_PI}/privacyidea/static_new; npm ci)
+	(cd ${BUILDDIR_PI}/privacyidea/static_new; npm run-script ng build)
+	# Drop node_modules from source tree to keep package clean
+	(cd ${BUILDDIR_PI}/privacyidea/static_new; rm -rf node_modules)
+	# -------------------------------------------
 	mkdir -p ${BUILDDIR_PI}/debian
 	cp -r ${DEBIAN_PI}/* ${BUILDDIR_PI}/debian/
 	# in case of a xenial (16.04) build, use a seperate rule file
