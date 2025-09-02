@@ -47,7 +47,7 @@ privacyidea:
 	(cd ${BUILDDIR_PI}/privacyidea/static_new; npm ci)
 	(cd ${BUILDDIR_PI}/privacyidea/static_new; npm run-script ng build)
 	# Drop node_modules from source tree to keep package clean
-	(cd ${BUILDDIR_PI}/privacyidea/static_new; rm -rf node_modules)
+	(cd ${BUILDDIR_PI}/privacyidea/static_new; find . -mindepth 1 -maxdepth 1 ! -name 'dist' -exec rm -rf {} +)
 	# -------------------------------------------
 	mkdir -p ${BUILDDIR_PI}/debian
 	cp -r ${DEBIAN_PI}/* ${BUILDDIR_PI}/debian/
