@@ -4,6 +4,8 @@ deploy/apache/privacyideaapp.wsgi               etc/privacyidea/
 
 # radius client
 deploy/privacyidea/dictionary			etc/privacyidea/
+deploy/privacyidea/dictionary.rfc2865		etc/privacyidea/
+deploy/privacyidea/dictionary.rfc2869		etc/privacyidea
 
 deploy/privacyidea/NetKnights.pem		etc/privacyidea/
 
