@@ -1,3 +1,22 @@
+privacyidea (3.12.1-1trusty) trusty; urgency=medium
+
+  Enhancements:
+  * Apply the token event handler action also to the users token (#4730)
+
+  Fixes:
+  * 'push_require_presence' policy does not work when 'push_wait' is set (#4702)
+  * Show the own audit logs of helpdesk admins (#4637)
+  * Allow empty user policies to revoke all user rights (#4721)
+  * Fixed saving basic HTTP resolver (#4728)
+  * Fixed database migrations for oracle (#4732)
+  * Config option to clear exceeded fail counters after a certain time: If the timeout is reached, any authentication
+    attempt clears the exceeded fail counter to restrict the number of new authentication attempts (#4706)
+  * Fail counter is not increased for disabled tokens (#4706)
+  * Fixed bulk deletion of tokens in the WebUI (#4690)
+  * Fix error when import json configuration file with pi-manage (#4733)
+
+ -- NetKnights GmbH <release@netknights.it>  Fri, 10 Oct 2025 12:30:00 +0200
+
 privacyidea (3.12-1trusty) trusty; urgency=medium
 
   Features:
