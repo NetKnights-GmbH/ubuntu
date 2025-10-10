@@ -61,7 +61,7 @@ endif
 	(cd DEBUILD; tar -zcf privacyidea_${PI_VERSION}.orig.tar.gz --exclude=debian/* privacyidea.orig)
 	# copy existing tgz from repository and overwrite the one we just created!
 	scp root@lancelot:/srv/www/nossl/community/${SERIES}/${BRANCH}/pool/main/p/privacyidea/privacyidea_${PI_VERSION}.orig.tar.gz DEBUILD/ || true
-	(cd ${BUILDDIR_PI}; DH_VIRTUALENV_INSTALL_ROOT=/opt/ DH_VERBOSE=1 dpkg-buildpackage -us -uc -k${SIGNKEY})
+	(cd ${BUILDDIR_PI}; SETUPTOOLS_SCM_PRETEND_VERSION_FOR_PRIVACYIDEA="v$(GIT_VERSION)" DH_VIRTUALENV_INSTALL_ROOT=/opt/ DH_VERBOSE=1 dpkg-buildpackage -us -uc -k${SIGNKEY})
 
 appliance:
 	mkdir -p DEBUILD
