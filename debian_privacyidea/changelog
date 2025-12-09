@@ -1,4 +1,4 @@
-privacyidea (3.12.2~dev1-1trusty) trusty; urgency=medium
+privacyidea (3.12.2-1trusty) trusty; urgency=medium
 
   Enhancements:
   * The WebUI Preview is updated to the current development version.
@@ -16,8 +16,9 @@ privacyidea (3.12.2~dev1-1trusty) trusty; urgency=medium
   * Apply all user conditions (username, realm, resolver) to the change pin policies (#4744)
   * Allow to specify a deviating base dn for LDAP group searches (#4829)
   * Fixed interaction of force_server_generate and 2step_enrollment policies (#4826)
+  * Enrolling a token with only realm assignment now correctly displays the QR Code (#4861)
 
- -- NetKnights GmbH <release@netknights.it>  Fri, 28 Nov 2025 12:30:00 +0200
+ -- NetKnights GmbH <release@netknights.it>  Thu, 11 Dec 2025 12:30:00 +0200
 
 privacyidea (3.12.1-1trusty) trusty; urgency=medium
 
