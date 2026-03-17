@@ -26,6 +26,7 @@ if [ -L /usr/local/bin/pi-manage ]; then
     rm -f /usr/bin/pi-manage
     rm -f /usr/bin/privacyidea-diag
     rm -f /usr/bin/privacyidea-token-janitor
+    rm -f /usr/bin/pi-tokenjanitor
 fi
 
 #DEBHELPER#
