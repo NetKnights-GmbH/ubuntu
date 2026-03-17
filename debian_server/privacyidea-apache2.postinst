@@ -125,6 +125,8 @@ set_path() {
     ln -sf /opt/privacyidea/bin/pi-manage /usr/bin/
     ln -sf /opt/privacyidea/bin/privacyidea-diag /usr/bin/
     ln -sf /opt/privacyidea/bin/privacyidea-token-janitor /usr/bin/
+    ln -sf /opt/privacyidea/bin/pi-tokenjanitor /usr/bin/
+
 }
 
 case "$1" in
