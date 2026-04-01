@@ -1,4 +1,4 @@
-privacyidea (3.13~dev2-1trusty) trusty; urgency=medium
+privacyidea (3.13-1trusty) trusty; urgency=medium
 
   Features:
   * The new WebUI 2.0 is now in beta, containing all admin functionality. But please be aware that layouts are not final and bugs may still occur.
@@ -41,8 +41,9 @@ privacyidea (3.13~dev2-1trusty) trusty; urgency=medium
   * Verify token enrollment now throws an error for a failed verification (#5056)
   * Fixed displaying of checkbox to use userstore password for container registration (#5114)
   * Fixed updating of phone and email settings in the token info during SMS and email token rollover (#5073)
+  * Catch FileNotFoundError for saving firebase sms gateway with invalid config file (#5119)
 
- -- NetKnights GmbH <release@netknights.it>  Mon, 30 Mar 2026 12:30:00 +0200
+ -- NetKnights GmbH <release@netknights.it>  Wed, 01 Apr 2026 12:30:00 +0200
 
 privacyidea (3.12.3-1trusty) trusty; urgency=medium
 
