@@ -1,3 +1,31 @@
+privacyidea (3.13.1~dev0-1trusty) trusty; urgency=medium
+
+  * The new WebUI beta has been updated to the current state of development. The menu is now back to the known top
+    side menu with slightly optimized menu structure, because having the horizontal space is better for displaying our
+    tables. The layout has been mostly flattened.
+
+  Enhancements:
+  * Added a dedicated push_challenge_text policy so the PUSH token notification can be worded independently of the
+    default challenge text — useful when both PUSH and a challenge-response token are active for the same user (#5300)
+
+  Fixes:
+  * Fixed PIN policies preventing passkey enrollment by allowing to set PIN for passkeys during enrollment (#5269)
+  * Added the passkey serial to the audit log for /auth requests (#5264)
+  * Fixed Event Handler conditions failing to handle datetime objects (#5256)
+  * Fixed passkey enrollment not working on MariaDB after an update (#5238)
+  * Fixed the datepicker not working in the old WebUI (#5237)
+  * Fixed signature verification for Yubico Validation Protocol v2 responses (#5229)
+  * Fixed empty email body when sending via Exchange SE (#5217)
+  * Allow registering a passkey on a computer that already has a revoked passkey for the user (#5191)
+  * Exclude custom user attributes from shallow user lookups, e.g. userlist (#5185)
+  * Improved error handling for password updates in the WebUI (#5181)
+  * Improved error handling for password reset via /recovery in the WebUI (#5201)
+  * Fixed the old WebUI dropping the configured custom user agent when editing an existing policy (#5295)
+  * HTTP resolver group config now matches the HTTP method case-insensitively and tolerates non-dict values (#5289)
+
+ -- NetKnights GmbH <release@netknights.it>  Thu, 07 May 2026 12:30:00 +0200
+
+
 privacyidea (3.13-1trusty) trusty; urgency=medium
 
   Features:
