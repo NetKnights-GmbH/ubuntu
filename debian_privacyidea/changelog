@@ -1,4 +1,4 @@
-privacyidea (3.13.1~dev2-1trusty) trusty; urgency=medium
+privacyidea (3.13.1~dev3-1trusty) trusty; urgency=medium
 
   * The new WebUI beta has been updated to the current state of development. The menu is now back to the known top
     side menu with slightly optimized menu structure, because having the horizontal space is better for displaying our
