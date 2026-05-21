@@ -1,4 +1,4 @@
-privacyidea (3.13.1~dev3-1trusty) trusty; urgency=medium
+privacyidea (3.13.1-1trusty) trusty; urgency=medium
 
   * The new WebUI beta has been updated to the current state of development. The menu is now back to the known top
     side menu with slightly optimized menu structure, because having the horizontal space is better for displaying our
@@ -23,7 +23,7 @@ privacyidea (3.13.1~dev3-1trusty) trusty; urgency=medium
   * Fixed the old WebUI dropping the configured custom user agent when editing an existing policy (#5295)
   * HTTP resolver group config now matches the HTTP method case-insensitively and tolerates non-dict values (#5289)
 
- -- NetKnights GmbH <release@netknights.it>  Thu, 07 May 2026 12:30:00 +0200
+ -- NetKnights GmbH <release@netknights.it>  Thu, 21 May 2026 12:30:00 +0200
 
 
 privacyidea (3.13-1trusty) trusty; urgency=medium
