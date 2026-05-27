@@ -1,3 +1,9 @@
+pi-appliance (3.3.1-2) xenial; urgency=low
+
+  * fix get_db_all_admins
+
+ -- NetKnights GmbH <release@netknights.it>  Wed, 27 May 2026 12:00:00 +0200
+
 pi-appliance (3.3.1-1) xenial; urgency=low
 
   * Update requirements
