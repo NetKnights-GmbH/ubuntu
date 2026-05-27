@@ -1,4 +1,4 @@
-pi-appliance (3.3.1-2) xenial; urgency=low
+pi-appliance (3.3.2-1) xenial; urgency=low
 
   * fix get_db_all_admins
 
