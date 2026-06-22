@@ -1,4 +1,4 @@
-privacyidea (3.13.3~dev0-1trusty) trusty; urgency=medium
+privacyidea (3.13.3-1trusty) trusty; urgency=medium
 
   Fixes:
   * Fixed migration scripts to be compatible with Oracle (tested with 21c).
@@ -6,7 +6,7 @@ privacyidea (3.13.3~dev0-1trusty) trusty; urgency=medium
   * Fixed an issue that would cause /healthz/resolversz to return HTTP error 500. (#5459)
   * Fixed encoding of parameters in the HTTP resolvers. (#5455)
 
- -- NetKnights GmbH <release@netknights.it>  Wed, 17 Jun 2026 12:30:00 +0200
+ -- NetKnights GmbH <release@netknights.it>  Wed, 24 Jun 2026 12:30:00 +0200
 
 privacyidea (3.13.2-1trusty) trusty; urgency=medium
 
