@@ -1,3 +1,9 @@
+pi-appliance (3.3.3-1) xenial; urgency=low
+
+  * Fix denpendencies for resolute
+
+ -- NetKnights GmbH <release@netknights.it>  Fri, 17 Jul 2026 12:00:00 +0200
+
 pi-appliance (3.3.2-1) xenial; urgency=low
 
   * fix get_db_all_admins
