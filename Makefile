@@ -44,7 +44,7 @@ privacyidea:
 	#(cd ${BUILDDIR_PI}; git submodule init; git submodule update --recursive --remote)
 	(cd ${BUILDDIR_PI}; rm -fr tests)
 	# --- Build new WebUI (requires npm/node) ---
-	(cd ${BUILDDIR_PI}/privacyidea/static_new; npm ci)
+	(cd ${BUILDDIR_PI}/privacyidea/static_new; npm install; npm ci)
 	(cd ${BUILDDIR_PI}/privacyidea/static_new; npm run-script ng build)
 	# Drop node_modules from source tree to keep package clean
 	(cd ${BUILDDIR_PI}/privacyidea/static_new; find . -mindepth 1 -maxdepth 1 ! -name 'dist' -exec rm -rf {} +)
@@ -132,6 +132,8 @@ init-repo:
 	mkdir -p $(MYDIR)/${REPO}/jammy/devel/conf
 	mkdir -p $(MYDIR)/${REPO}/noble/stable/conf
 	mkdir -p $(MYDIR)/${REPO}/noble/devel/conf
+	mkdir -p $(MYDIR)/${REPO}/resolute/stable/conf
+	mkdir -p $(MYDIR)/${REPO}/resolute/devel/conf
 	cp distributions/xenial-devel ${REPO}/xenial/devel/conf/distributions
 	cp distributions/xenial-stable ${REPO}/xenial/stable/conf/distributions
 	cp distributions/bionic-devel ${REPO}/bionic/devel/conf/distributions
@@ -142,6 +144,8 @@ init-repo:
 	cp distributions/jammy-stable ${REPO}/jammy/stable/conf/distributions
 	cp distributions/noble-devel ${REPO}/noble/devel/conf/distributions
 	cp distributions/noble-stable ${REPO}/noble/stable/conf/distributions
+	cp distributions/resolute-devel ${REPO}/resolute/devel/conf/distributions
+	cp distributions/resolute-stable ${REPO}/resolute/stable/conf/distributions
 	reprepro -b $(MYDIR)/${REPO}/xenial/stable createsymlinks
 	reprepro -b $(MYDIR)/${REPO}/xenial/devel createsymlinks
 	reprepro -b $(MYDIR)/${REPO}/bionic/stable createsymlinks
@@ -152,6 +156,8 @@ init-repo:
 	reprepro -b $(MYDIR)/${REPO}/jammy/devel createsymlinks
 	reprepro -b $(MYDIR)/${REPO}/noble/stable createsymlinks
 	reprepro -b $(MYDIR)/${REPO}/noble/devel createsymlinks
+	reprepro -b $(MYDIR)/${REPO}/resolute/stable createsymlinks
+	reprepro -b $(MYDIR)/${REPO}/resolute/devel createsymlinks
 
 add-repo-devel:
 	cp ${MYDIR}/${REPO}/${SERIES}/devel/pool/main/p/privacyidea-server/privacyidea-server_${PI_VERSION}.orig.tar.gz DEBUILD/ || true
