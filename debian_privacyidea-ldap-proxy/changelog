@@ -1,3 +1,10 @@
+privacyidea-ldap-proxy (0.8-1trusty) trusty; urgency=medium
+
+  * Resolute ready
+  * Update requirements
+ 
+ -- NetKnights GmbH <release@netknights.it>  Tue, 04 Aug 2026 12:00:00 +0200
+
 privacyidea-ldap-proxy (0.7-1trusty) trusty; urgency=medium
 
   * Enable GitHub workflow 55
