@@ -1,4 +1,4 @@
-privacyidea (3.13.4~dev1-1trusty) trusty; urgency=medium
+privacyidea (3.14~dev1-1trusty) trusty; urgency=medium
 
   Features:
   * API clients can authenticate with an API key in the `X-API-Key` header, which gives an integration a stable,
