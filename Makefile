@@ -44,10 +44,10 @@ privacyidea:
 	#(cd ${BUILDDIR_PI}; git submodule init; git submodule update --recursive --remote)
 	(cd ${BUILDDIR_PI}; rm -fr tests)
 	# --- Build new WebUI (requires npm/node) ---
-	(cd ${BUILDDIR_PI}/privacyidea/static_new; npm install; npm ci)
-	(cd ${BUILDDIR_PI}/privacyidea/static_new; npm run-script ng build)
+	(cd ${BUILDDIR_PI}/privacyidea/static; npm ci)
+	(cd ${BUILDDIR_PI}/privacyidea/static; npm run build)
 	# Drop node_modules from source tree to keep package clean
-	(cd ${BUILDDIR_PI}/privacyidea/static_new; find . -mindepth 1 -maxdepth 1 ! -name 'dist' -exec rm -rf {} +)
+	(cd ${BUILDDIR_PI}/privacyidea/static; find . -mindepth 1 -maxdepth 1 ! -name 'dist' -exec rm -rf {} +)
 	# -------------------------------------------
 	mkdir -p ${BUILDDIR_PI}/debian
 	cp -r ${DEBIAN_PI}/* ${BUILDDIR_PI}/debian/
@@ -60,7 +60,7 @@ endif
 	sed -e s/"trusty) trusty; urgency"/"${SERIES}) ${SERIES}; urgency"/g ${DEBIAN_PI}/changelog > ${BUILDDIR_PI}/debian/changelog
 	(cd DEBUILD; tar -zcf privacyidea_${PI_VERSION}.orig.tar.gz --exclude=debian/* privacyidea.orig)
 	# copy existing tgz from repository and overwrite the one we just created!
-	scp root@lancelot:/srv/www/nossl/community/${SERIES}/${BRANCH}/pool/main/p/privacyidea/privacyidea_${PI_VERSION}.orig.tar.gz DEBUILD/ || true
+	#scp root@lancelot:/srv/www/nossl/community/${SERIES}/${BRANCH}/pool/main/p/privacyidea/privacyidea_${PI_VERSION}.orig.tar.gz DEBUILD/ || true
 	(cd ${BUILDDIR_PI}; SETUPTOOLS_SCM_PRETEND_VERSION_FOR_PRIVACYIDEA="v$(GIT_VERSION)" DH_VIRTUALENV_INSTALL_ROOT=/opt/ DH_VERBOSE=1 dpkg-buildpackage -us -uc -k${SIGNKEY})
 
 appliance:
@@ -100,7 +100,7 @@ server:
 	sed -e s/"trusty) trusty; urgency"/"${SERIES}) ${SERIES}; urgency"/g ${DEBIAN_SERVER}/changelog > ${BUILDDIR_SERVER}/debian/changelog
 	(cd DEBUILD; tar -zcf privacyidea-server_${PI_VERSION}.orig.tar.gz --exclude=debian/* privacyidea-server.orig)
 	# copy existing tgz from repository and overwrite the one we just created!
-	scp root@lancelot:/srv/www/nossl/community/${SERIES}/${BRANCH}/pool/main/p/privacyidea-server/privacyidea-server_${PI_VERSION}.orig.tar.gz DEBUILD/ || true
+	#scp root@lancelot:/srv/www/nossl/community/${SERIES}/${BRANCH}/pool/main/p/privacyidea-server/privacyidea-server_${PI_VERSION}.orig.tar.gz DEBUILD/ || true
 	(cd ${BUILDDIR_SERVER}; dpkg-buildpackage -sa -us -uc -k${SIGNKEY})
 
 pi-ldapproxy:
