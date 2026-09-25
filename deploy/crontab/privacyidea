@@ -1,11 +1,35 @@
 # Run the privacyidea-cron runner every 5 minutes
 */5 * * * *	privacyidea	/opt/privacyidea/bin/privacyidea-cron run_scheduled -c
 
+# Cleanup jobs: they delete the stale rows these tables accumulate.
+# They discard their progress output; errors still reach cron's mail.
+
+# Challenge cleanup: every day at 01:00
+0 1 * * *	privacyidea	/opt/privacyidea/bin/pi-manage config challenge cleanup > /dev/null
+
+# Remembered device cleanup: every day at 01:10
+10 1 * * *	privacyidea	/opt/privacyidea/bin/pi-manage config remembered_device cleanup > /dev/null
+
+# Authentication cache cleanup (entries no auth_cache policy accepts any more): every day at 01:20
+20 1 * * *	privacyidea	/opt/privacyidea/bin/pi-manage config authcache cleanup > /dev/null
+
+# Metrics cleanup (rows older than 24 hours): every day at 01:30
+30 1 * * *	privacyidea	/opt/privacyidea/bin/pi-manage config metrics cleanup > /dev/null
+
+# Conditional access: remove expired IP blocks and user locks, every day at 01:40
+40 1 * * *	privacyidea	/opt/privacyidea/bin/pi-manage conditionalaccess purge-expired-blocks > /dev/null
+40 1 * * *	privacyidea	/opt/privacyidea/bin/pi-manage conditionalaccess purge-expired-locks > /dev/null
+
+# User cache cleanup (does nothing unless the user cache is enabled): every day at 01:50
+50 1 * * *	privacyidea	/opt/privacyidea/bin/privacyidea-usercache-cleanup > /dev/null
+
+# The audit log and the authentication log need a retention period of your choice.
+
 # Audit rotation example: once a week at 00:00 on Sunday
 #0 0 * * 0	privacyidea	/opt/privacyidea/bin/pi-manage audit rotate --age 360
 
-# Challenge cleanup: every day at 01:00
-0 1 * * *    privacyidea     /opt/privacyidea/bin/pi-manage config challenge cleanup > /dev/null 2>&1
+# Authentication log cleanup example (keep 90 days): every day at 00:30
+#30 0 * * *	privacyidea	/opt/privacyidea/bin/pi-manage authlog cleanup --age 90 > /dev/null
 
 # Run a backup once a day at 2:15 am including the encryption key
 #15 2 * * *	privacyidea	/opt/privacyidea/bin/pi-manage backup create -e
